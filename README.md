@@ -1,8 +1,6 @@
 # FabAcademy_Template
-An html/ajax template for the students of Fab Academy
 
-## License
-MIT
+I'm using a modified version of the Fabacademy template to document my future work. Thanks to my instructors for getting the gist!
 
 ## Includes
 * <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
