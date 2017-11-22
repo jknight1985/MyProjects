@@ -95,10 +95,36 @@
         
     <p>Use this:</p>
         
-        <iframe width="854" height="480" src="https://www.youtube.com/embed/a7wEuzupfQc?ecver=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="640" height="480" src="https://www.youtube.com/embed/a7wEuzupfQc?ecver=1" frameborder="0" allowfullscreen></iframe>
         
     <p><a href="https://www.dropbox.com/sh/qanksu2tq7kf0bp/AADeQ0rY-EZiwhVsXJKVZYaMa?dl=0">downloads</a></p>
 
+    <p>Can't see the running server, I will try something. Step by step:</p>
+        
+    <ul>
+        <li>Talk to ESP8266 --> Webserver (Access point)</li>
+        <li>Web interface (switch port (internal led), second button</li>
+        <li>Add second client --> switch LED of client</li>
+        <li>Add third client --> switch LED of client</li>
+    </ul>
+        
+    <h2>Step 1: Start a web server</h2>
+    
+        <p>I built upon the WiFi Access Point sketch in the Arduino IDE, following this tutorial:</p>
+        <iframe width="640" height="480" src="https://www.youtube.com/embed/FyPZ29wgD7Y?ecver=1" frameborder="0" allowfullscreen></iframe>        
+        
+        <p>To make it easier to create IDE compliant html syntax, I used <a href="http://tomeko.net/">this</a> resource to convert regular html code. Click <b>online tools</b> and use <b>text to cpp</b> to convert html to <b>c-string format</b>.</p>
+        
+        <p>It's very easy to integrate <code>html</code> code this. I continue to the switch tutorial, using also JavaScript elements.</p>
+        
+        <iframe width="854" height="480" src="https://www.youtube.com/embed/B8UnJFybWM0?ecver=1" frameborder="0" allowfullscreen></iframe>
+        
+        <p><b>IMPORTANT:</b> password has to have at leat 8 characters! Otherwise your SSID won't show up.</p>
+        
+    <h2>Step 2: Switch internal LED using JavaScript</h2>
+        
+        <p></p>
+        
     <!-- End of your content -->
 
     </div> <!-- /container -->
