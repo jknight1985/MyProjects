@@ -131,7 +131,7 @@ console.log(xhr.statusText)</pre>
         
     <h3>If/else</h3>
         
-    <p>All variables that have been created and set are truthy (and will evaluate to true if they are the condition of a control flow statement), unless '0', 'false#, etc.</p>
+    <p>All variables that have been created and set are truthy (and will evaluate to true if they are the condition of a control flow statement), unless '0', 'false', etc.</p>
         
     <pre>if()
     {...}
@@ -141,7 +141,7 @@ console.log(xhr.statusText)</pre>
     <p>For comparison use the <code>===</code> operator. As an alternative, you can use <code>switch</code>.</p>
         
     <pre>
-    switch (xyz){
+switch (xyz){
 case 'tomato':
 ...
 break;
@@ -158,7 +158,68 @@ break;
         
         <p>With the <b>Ternary operator</b> you can shorten the if-condition significantly. This type <b>?</b> after the condition following by the "true"-block and separte the "else"-block with a colon (:).</p>
         
-    </div> <!-- /container -->1
+<h3>Functions</h3>
+        
+    <p>Arrow token <code>nameOfTheFunction (argmument) => {... return x;}</code>. 
+        
+    <p>There are some simplifications possible:</p>
+        
+    <ul>
+        <li>Single argument functions do not even need brackets.</li>
+        <li>Single line functions can also use <b>implicit return</b> without actually having the necessity to mention the key world in the code.</li>
+        <li>Single line functions do not rely on curly brackets to separate the function block.</li>
+    </ul>
+        
+<h3>Function Declarations</h3>
+        
+    <pre>
+function isGreaterThan(numberOne, numberTwo){
+  if(numberOne>numberTwo) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+isGreaterThan(2,1);    
+    </pre>
+        
+    <h3>Functions Expressions</h3>        
+
+    <p>Does not contain a function identifier, stored in a variable. You can also abbreviate but gettin rid of "function" and using the =&lt>.</p>
+        
+    <pre>        
+const square = function (number) {
+  return number * number;
+};
+
+console.log(square(5));
+// Output: 25.
+    </pre>        
+        
+<h3>Scope</h3>
+        
+    <p>There are local and global variables, these have different scope. Avoid using global variable, as it might cause interference with local ones.</p>
+        
+    <p>Especially, loop variable - such as the ones in a for-loop - are of local scope.</p>
+        
+    <pre>for (let i=0; i &lt 12; i++){
+console.log(i);
+    };</pre>
+    
+    <p>Calling a variable outside its scope will return a <b>reference error</b>.</p>
+        
+<h3>Arrays</h3>
+    <p>The key concept of an array is store and retrieve data. It is like a custom list.</p>
+        
+<pre>let newYearsResolutions = ['','',''];</pre>
+        
+    <p>The <code>pop</code>-method removes the last item of an array, the <code>push</code>-message adds items.</p>
+        
+    <p>Arrays can be of type <code>let</code> or <code>const</code>. Items of both can be changed, however items of an array of const-type can't be changed in length or data type.</p>
+        
+    </div> <!-- /container -->
 
 	<!-- footer -->
     
