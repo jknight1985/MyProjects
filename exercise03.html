@@ -219,8 +219,399 @@ console.log(i);
         
     <p>Arrays can be of type <code>let</code> or <code>const</code>. Items of both can be changed, however items of an array of const-type can't be changed in length or data type.</p>
         
-    </div> <!-- /container -->
+<h3>Loops</h3>
+        
+<p>For-Loop are good, but you need to in advance how often you want to loop. <b>While</b>-loops wait for a condition to stop. Use unequal <code>==!</code> or the equal <code>===</code> sign to define your condition. However, be sure that the while-condition is met at some point, otherwise it will loop to infinity.</p>
+        
+<h3>Iterators</h3>
+        
+<p><code>Map</code>, <code>forEach</code> and <code>filter</code> are typical array operator. These are actually simplified loop-calls.</p>
 
+<p>Need to know about <code>forEach</code>:</p>
+<ul>
+    <li>methods only work on arrays</li>
+    <li>won't change the actual array</li>
+    <li>return value is undefined</li>
+</ul>
+
+<p>In the <code>forEach</code>-iterator, each argument is handed over to the variable in the function.</p>
+
+<p>Function definition:</p>
+<pre>fruits.forEach(function(groceryItem){
+  console.log('I want to eat a ' + groceryItem)
+});</pre>
+        
+<p>Alternatively, use arrow syntax:</p>
+<pre>fruits.forEach((groceryItem) => console.log('I want to eat a ' + groceryItem));</pre>
+        
+<p>The <code>map</code>-iterator however <b>does change</b> the array.</p>
+        
+<pre>let secretMessage = animals.map(function(firstLetter){
+  return firstLetter[0];
+})</pre>
+        
+<p>or:</p>
+        
+<pre>let smallNumbers = bigNumbers.map(num => num/100);</pre>
+        
+<p>The variable inside the brackets is <b>local</b>!</p>
+        
+<p>In the <code>filter</code> iterator, you need to hand over the filter condition:</p>
+        
+<pre>let smallNumbers = randomNumbers.filter(item => item.length &lt 250);</pre>
+
+<p>The <code>every</code> method returns a boolean value.</p>
+        
+<h3>Objects</h3>
+        
+<p>Complex data types can be writen in JSON like this:</p>
+        
+<pre>let person = {
+  name: 'Joern',
+  age: 32,
+}
+
+console.log(person.name);</pre>
+        
+<p>Single attribute or <b>key</b> can be accessed with a '<code>.</code>' . Alternative, brackets can be used:</p>
+        
+<pre>console.log(person['name']);
+console.log(person['age']);</pre>
+        
+<p>Keys can also be accessed by variables, e. .:</p>
+
+<pre>let person = {
+  name: 'Joern',
+  age: 32,
+  weekendAlarm: 'No alarms needed',
+  weekAlarm: 'Alarm set to 7AM',
+}
+
+let day ='Monday';
+let alarm;
+
+if (day ==='Saturday' || day === 'Sunday'){
+  alarm = 'weekendAlarm';
+}
+else{
+  alarm = 'weekAlarm';
+};
+
+console.log(person['name']);
+console.log(person['age']);
+console.log(person[alarm])</pre>
+
+<p>Within an object, you can also have methods, like this (new ES6 notation):</p>
+        
+<pre>sayHello() {return 'Hello, there!'},</pre>
+        
+<p>Calling a function works just like calling a key, using the <code>.</code>operator.</p>
+        
+<h4>This keyword</h4>
+        
+<p>To make functions able to access to objects keys, the <code>this</code> keyword is needed. It works only inside the object and equals the call of key with the <code>.</code>operator in the <b>outside world</b>.</p>
+
+<pre>sayHello () {return `Hello, my name is ${this.name}!`},</pre>
+
+<p>This can limit the scope of a function to the calling object.</p>
+        
+<pre>let friend = {
+  name: 'Maurice',
+}
+friend.sayHello=person.sayHello;
+</pre>
+
+<p>Outputting the result of <code>friend.sayHello</code> will you gave your friends name, instead of <code>person</code> name.</p>
+        
+<h4>Getters & setters</h4>
+
+    <p>As the name implies, setter methods or used to <b>set</b> keys. They are "allowed" to access and perform validity checks on data type and scope.</p>
+        
+<pre> set age(ageIn) {
+    if (typeof ageIn === 'number') {
+      this._age = ageIn;
+    }
+    else {
+      console.log('Invalid input');
+      return 'Invalid input';
+    }
+  }
+}</pre>
+        
+<p>Getter methods also carry the same name as the property they are accessing. They are tagged with the keyword <b>get</b>.</p>
+
+<pre>
+...,
+get age() {
+    console.log(`${this._name} is ${this._age} years old.`);
+    return this._age;
+  }
+
+};
+
+person.age;</pre>
+        
+<h3>Classes</h3>
+        
+<p>Important difference to objects is the constructor method. It is called to create an object.</p>
+        
+<pre>class Surgeon {
+  constructor(name, department){
+    this.name = name;
+    this.deparment = department;
+  }
+  
+<p>To call it:</p>
+<pre>const surgeonCurry = new Surgeon('Curry','Cardiovascular');</pre>
+  
+}</pre>
+
+<p>Class method and getter syntax is the same as it is for objects except <b>you can not include commas between methods.</b></p>
+        
+<h4>Inheritance</h4>
+        
+<p>Avoid rewriting huge amounts of code by inheriting properties from one parent class to a child class, e. g. cat is a derivative from the animals class.</p>
+        
+<pre>class Cat extends Animal {
+  constructor(name, usesLitter) {
+    super(name);
+    this._usesLitter = usesLitter;
+  }
+}</pre>
+ 
+<p>It uses the keywords <b>extends</b> and <b>super</b>. Extends makes the methods of the parent class available, accepting the keyword name, which is defined in the parent class. The keyword <b>super</b> passes the argument to the parent class' constructor (<b>write super as your first line, in order not to forget it!</b>). The new property property is defined in the derived constructor of the cat class. </p>
+
+<pre>class HospitalEmployee {
+  constructor(name) {
+    this._name = name;
+    this._remainingVacationDays = 20;
+  }
+  
+  get name() {
+    return this._name;
+  }
+  
+  get remainingVacationDays() {
+    return this._remainingVacationDays;
+  }
+  
+  takeVacationDays(daysOff) {
+    this._remainingVacationDays -= daysOff;
+  }
+}
+
+class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  } 
+  
+  get certifications() {
+    return this._certifications;
+  }
+  
+  addCertification(newCertification) {
+    this.certifications.push(newCertification);
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma','Pediatrics']);
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+nurseOlynyk.addCertification('Genetics');
+console.log(nurseOlynyk.certifications);</pre>
+    
+<h4>Static methods</h4>
+        
+<p>Static methods cannot be called from an instances, but only from the class itself, e. g. <b>HospitalEmployee</b>.</p>
+        
+<h3>Browser Compatibility & Transpilation</h3>
+        
+<p>There is often time between a new JavaScript version (e. g. ES6) and the time the browsers are ready to use it. Two valuable resource to check compatibility issues:</p>
+
+<ul>
+    <li><a href="https://caniuse.com/">caniuse.com</a> — A website that provides data on web browser compatibility for HTML, CSS, and JavaScript features. You will learn how to use it to look up ES6 feature support.</li>
+    <li>Babel — A Javascript library that you can use to convert new, unsupported JavaScript (ES6), into an older version (ES5) that is recognized by most modern browsers.</li>
+</ul>        
+
+<p>To use Babel, follow these steps:</p>
+        
+<pre>npm install babel-cli
+npm install babel-preset-env
+npm run build
+</pre>
+        
+<p>This then transpiles your code to ES5. Before we can add Babel to our project directory, we need to <code>run npm init</code>. The npm init command creates a package.json file in the root directory, which <b>/src</b>.</p>
+
+<p>A package.json file contains information about the current JavaScript project. Some of this information includes:</p>
+
+<ul>
+    <li>Metadata — This includes a project title, description, authors, and more.</li>
+    <li>A list of node packages required for the project — If another developer wants to run your project, npm looks inside package.json and downloads the packages in this list.</li>     
+</ul>
+
+<p>The -D flag instructs npm to add each package to a property called <b>devDependencies</b> in package.json. Once the project's dependencies are listed in devDependencies, other developers can run your project without installing each package separately. Instead, they can simply run npm install — it instructs npm to look inside package.json and download all of the packages listed in devDependencies.</p>
+
+<pre>$ npm install babel-cli -D
+$ npm install babel-preset-env -D</pre>
+        
+<p>To create the babelrc file use:</p>
+<pre>touch .babelrc</pre>
+        
+<p>Create an obj. called:</p>
+<pre>{
+  "presets": ["env"]
+}</pre>
+        
+<p>Open the package.json file and the line which begin with <b>build</b>. The property's value, "babel src -d lib", is a command line method that transpiles ES6+ code to ES5. </p>
+
+<pre>{
+  "name": "browsercomp",
+  "version": "1.0.0",
+  "description": "test transpilation es6 to es5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": "babel src -d lib"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
+</pre>
+        
+<p>Finally, call build from the command line.</p>
+        
+<p>npm run build</p>
+        
+<p>The new <b>main.js</b> file is writen to the <b>lib</b> directory.</p>
+        
+<h3>Intermediate JavaScript Modules</h3>
+        
+<p>The pattern we use to export modules is thus:</p>
+
+<ul>
+    <li>Define an object to represent the module.</li>
+    <li>Add data or behavior to the module.</li>
+    <li>Export the module.</li>
+</ul>
+
+<p>Define the module in a file called <b>1-airplane.js</b>.</p>
+<pre>let Airplane ={
+  myAirplane: "StarJet",
+};
+
+module.exports = Airplane;</pre>
+        
+<p>Create a new file <b>1-missionControl.js</b> and import the module. Test by calling the modules property.</p>
+        
+<pre>const Airplane = require('./1-airplane.js');
+
+function displayAirplane(){ console.log(Airplane.myAirplane);
+};
+
+displayAirplane();</pre>
+        
+<h4>Export default</h4>
+        
+<p>Default export: one module per file!</p>
+    
+<pre>let Airplane = {};
+
+Airplane.availableAirplanes = [
+{
+  name: 'AeroJet',
+  fuelCapacity: 800
+ }, 
+ {name: 'SkyJet',
+  fuelCapacity: 500
+ }
+];
+
+export default Airplane;</pre>
+        
+<p>And import it:</p>
+        
+<pre>import Airplane from './airplane';
+
+function displayFuelCapacity(){
+  Airplane.availableAirplanes.forEach(function(element){
+    console.log('Fuel Capacity of ' + element.name + ': ' + element.fuelCapacity);
+  });
+};
+
+displayFuelCapacity();</pre>
+        
+<h4>Named exports</h4>
+        
+        <p>Export each element by name.</p>
+        
+<pre>let availableAirplanes = [
+{
+  name: 'AeroJet',
+  fuelCapacity: 800,
+  availableStaff: ['pilots', 'flightAttendants','engineers','medicalAssistance','sensorOperators']
+ }, 
+ {name: 'SkyJet',
+  fuelCapacity: 500,
+  availableStaff: ['pilots', 'flightAttendants']
+ }
+];
+
+let flightRequirements = {
+  requiredStaff: 4
+};
+
+function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length>=requiredStaff){
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+export {availableAirplanes, flightRequirements, meetsStaffRequirements};</pre>
+        
+<p>The same works for imports:</p>
+        
+<pre>import {availableAirplanes, flightRequirements, meetsStaffRequirements} from './airplane';</pre>
+        
+<h4>Export named exports</h4>
+        
+        <p>Export variables on declaration:</p>
+        
+<pre>export let flightRequirements = {
+  requiredStaff: 4,
+  requiredSpeedRange: 700
+};
+
+export function meetsStaffRequirements(availableStaff, requiredStaff) {
+  if (availableStaff.length>=requiredStaff){
+    return true;
+  }
+  else {
+    return false;
+  }
+};</pre>
+        
+<h4>Import named imports</h4>
+        
+        <p>no change</p>
+        
+<h4>Export as</h4>
+        
+        <p>This lets you export the variable under a different name.</p>
+        
+<pre>export{availableAirplanes as aircrafts, ...}</pre>
+        
+        <p>This works the same for importing. Another way of doing it is aliasing on import.</p>
+        
+        
+</div> <!-- /container -->
+      
 	<!-- footer -->
     
     <footer id="footer">
