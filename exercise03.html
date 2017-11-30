@@ -360,11 +360,10 @@ person.age;</pre>
     this.name = name;
     this.deparment = department;
   }
+</pre>
   
 <p>To call it:</p>
 <pre>const surgeonCurry = new Surgeon('Curry','Cardiovascular');</pre>
-  
-}</pre>
 
 <p>Class method and getter syntax is the same as it is for objects except <b>you can not include commas between methods.</b></p>
         
@@ -609,7 +608,169 @@ export function meetsStaffRequirements(availableStaff, requiredStaff) {
         
         <p>This works the same for importing. Another way of doing it is aliasing on import.</p>
         
+<h3>Requests</h3>
         
+        <p>JavaScript is an asynchronous language, i. e. you can use partly loaded content and handle multiple request to the server in an <b>event loop</b>. Longer messages are broken into smaller messages that are ready to run.</p>
+        
+        <p>When asking for content from other websites, we separate the request from what we do with the response. For this, we use <b>Asynchronous JavaScript and XML (AJAX)</b>.</p>
+        
+        <h4>API authentification - example Google URL Shortener</h4>
+        
+        <p>A resource you might want to have a look at is <a href="https://developers.google.com/url-shortener/v1/getting_started">Google URL Shortener</a>.</p>
+        
+        <p>Client ID and client secret (aquivalent to user and password) for OAuth authentification.</p>
+        
+        <p>To access the URL shortener via JavaScript requests, you need create an API key. Follow this instruction <a href="https://www.codecademy.com/articles/google-api">here</a>.</p>
+        
+        <ul>
+            <li>Create a google account that is associated to your project or use your own.</li>
+            <li>Go to the <b>Google API</b> dashboard.</li>
+            <li>Create a webserver access API, that is public.</li>
+            <li>Copy the API key.</li>
+        </ul>
+                
+        <h4>Http requests</h4>
+        
+    <p>We have been discussing http request before, so just as a quick reminder:</p>
+
+    <ul>
+        <li>GET: requests receive information from the specified source (you just saw this one!) --> <b>like a Google search terms, these are added to the URL!</b> <code>https://www.google.com/#q=pizza+near+union+square</code></li>
+        <li>POST: change information in the specified source and receive information in response. Instead of sending information in the URL, it is sent as part of the body of the request.</li>
+        <li>PUT: updates existing information of the specified source.</li>
+        <li>DELETE: removes existing information from the specified source.</li>
+    </ul>        
+        
+    <h4>GET request</h4>
+        
+        <p>here are several steps to creating an AJAX request using an XMLHttpRequest, or XHR, object.</p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/AJAX_request.png"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/AJAX_request.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>AJAX Request</legend>
+            </div>
+        </div> 
+        
+        <ul>
+        <li>On the first line, we create an XMLHttpRequest object. We do that by typing new, then the type of object, XMLHttpRequest(). This is called the new operator.</li>
+
+        <li>The object is saved in a const called xhr. </li>
+
+        <li>On the next line, we save the URL to which the request is sent.</li>
+
+        <li>We set the responseType of the xhr object to 'json'.</li>
+
+        <li><code>onreadystatechange</code> is an event handler that is called whenever the value of the <code>readyState</code> property changes.</li>
+
+        <li>if <code>readyState</code> of our xhr object is equal to <code>XMLHttpRequest.DONE</code>, the code in the block executes.</li>
+
+        <li>Then, we call the <code>.open()</code> method on our xhr object and pass it two arguments - 'GET' (the type of request) and url, the URL we're querying. <code>.open()</code> creates and structures the request. It tells the request what method to use, GET or POST, and what URL to query.
+
+        <li>Finally, we call the <code>.send()</code> method on our xhr object and pass it no arguments. This is because data sent in GET requests is sent as part of the URL. Calling the .send() method sends the xhr object with its relevant information to the API URL. </li>
+        </ul>
+        
+<pre>const xhr = new XMLHttpRequest;
+const url = 'https://api-to-call.com/endpoint';
+xhr.responseType = 'json';
+xhr.onreadystatechange = function (){
+  if (xhr.readyState === XMLHttpRequest.DONE) {
+	console.log(xhr.response);
+	}
+};
+
+xhr.open('GET',url);
+xhr.send();</pre>
+        
+<h4>Using an API key</h4>
+
+<p>The API needs to be added as a variable.</p>
+        
+<pre>function expandUrl() {
+const urlToExpand = url + '?key=' + apiKey + '&amp shortUrl=' + $inputField.val();
+}</pre>
+        
+<p>The code above adds two query parameters to the API URL. We need to tell Google which short URL we want to expand and we need to provide our API key, which is how we get permission from Google to use this service.</p>        
+        
+<pre>function expandUrl() {
+const urlToExpand = url + '?key=' + apiKey + '&amp shortUrl=' + $inputField.val();
+const xhr = new XMLHttpRequest;
+xhr.responseType = 'json';
+xhr.onreadystatechange = function (){
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+  		$responseField.append('&ltp>Your expanded url is: &lt/p>&ltp>' + xhr.response.longUrl + '&lt/p>');
+		}
+    };
+  xhr.open('GET', urlToExpand);
+  xhr.send();
+}</pre>    
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/ShortenedResponse.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/ShortenedResponse.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>Long url response</legend>
+            </div>
+        </div>      
+        
+<h4>POST requests</h4>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/AJAX_request_POST.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/AJAX_request_POST.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>POST request</legend>
+            </div>
+        </div>      
+                
+        
+<p>In a POST request, the information is sent to the server as part of the body of the request. This information is created and saved in the <b>data constant</b> and sent to the API as an argument passed to the .send() method.</p>
+        
+<p>The first two lines are identical, the third line containts the object containing the data that is passed to the JSON.stringify() method, which will format the object as a string. This is saved to a const called data. </p>
+        
+<p>Everything else remains the same until the final two lines. When we call the .open() method on the xhr object, we pass the argument 'POST' instead of 'GET'. Finally, we pass the data string to the .send() method. </p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/ShortenedResponse_Shorten.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/ShortenedResponse_Shorten.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>Shorten response</legend>
+            </div>
+        </div>  
+        
+<pre>function shortenUrl() {
+  const urlWithKey = url + '?key=' + apiKey;
+  const urlToShorten = $inputField.val();
+  const data = JSON.stringify({longUrl: urlToShorten});
+  const xhr = new XMLHttpRequest;
+  xhr.responseType = 'json';
+  xhr.onreadystatechange = function(){
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+  		$responseField.append('<p>Your shortened url is: &lt/p>&ltp>' + xhr.response.id + '&lt/p>');
+		}
+  }
+  xhr.open('POST', urlWithKey);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(data);
+}</pre>     
+        
+<h4>$.ajax() GET Requests I</h4>
+        
+<p>You can also methods from the <b>jQuery library</b>, to simply the code for a request.</p>        
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/jQuery_GET.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/jQuery_GET.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>jQuery GET request</legend>
+            </div>
+        </div>        
+    
 </div> <!-- /container -->
       
 	<!-- footer -->
