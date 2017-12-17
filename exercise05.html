@@ -8,7 +8,7 @@
     <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>Node MCU</title>
+    <title>APIs with p5</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -81,9 +81,101 @@
 	<!-- Insert your content here below! -->
 
 
-    <h2>Exercise...</h1>
+    <h2>APIs with p5</h2>
+        
+    <p>I was following a tutorial below. I did not use <b>p5</b> editor, also as it was discontinued, but rather <b>Brackets</b> which I was already using before.</p>
     
+    <div class="container">        
+        <div class="row">
+            <div class="col-sm-6 text-center">             
+                <iframe src="https://www.youtube.com/embed/ecT42O6I_WI" frameborder="0" allowfullscreen></iframe>
+                <legend>p5 tutorial on APIs</legend>
+            </div>
+            <div class="col-sm-6 text-center">             
+                <iframe src="https://www.youtube.com/embed/4UoUqnjUC2c" frameborder="0" allowfullscreen></iframe>
+                <legend>p5 tutorial on APIs</legend>
+            </div>
+        </div>            
+    </div>      
 
+    <p>This is the JavaScript Code:</p>
+        
+<pre class="pre-scrollable">var api = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var api_key = '&APPID=58f3134069214bf7f264db0d5664afda';
+var units = '&units=metric';
+var city = 'london';
+var url;
+var weather;
+var input;
+
+
+function setup() {
+    createCanvas(400, 200);  
+    
+    var button = select('#submit');
+    button.mousePressed(weatherAsk);
+    
+    input = select('#city');
+}
+
+function weatherAsk(){
+    //console.log(input);
+    url = api + input.value() + api_key + units;    
+    loadJSON(url, gotData);
+}
+
+function gotData(data){
+    weather = data;
+    println(data);
+}
+
+function draw() {
+   
+    background(0);
+    if (weather){
+        var temp = weather.main.temp;
+        var humidity = weather.main.humidity;
+        ellipse(100, 100, temp, temp);
+        ellipse(300, 100, humidity, humidity);
+        console.log(url);
+    }
+
+}
+</pre>
+
+<p>And the html-code, calling the js-sketch.</p>
+        
+<pre class="pre-scrollable">&lthtml>
+&lthead>
+  &lt meta charset="UTF-8">
+  &ltscript language="javascript" type="text/javascript" src="libraries/p5.js">&lt/script>
+  &ltscript language="javascript" src="libraries/p5.dom.js">&lt/script>
+  &ltscript language="javascript" src="libraries/p5.sound.js">&lt/script>
+  &ltscript language="javascript" type="text/javascript" src="sketch.js">&lt/script>
+&lt/head>
+
+&ltbody>
+    &lth2>Weather and humidity in the city&lt/h2>
+    
+    &ltp>
+        City: &ltinput id = "city" value = "London">&lt/input>
+        &ltbutton id="submit">submit&lt/button>
+    &ltbr/>
+    &lt/p>
+&lt/body>
+&lt/html>
+</pre>
+        
+    <h2>Continuous querying of API</h2>
+        
+    <h2>Download</h2>
+        
+        <a href="media/files/StartJSp5.zip" download>
+        <button type="button" class="btn btn-primary btn-lg">Start *.js files for p5</button>
+        </a>
+        <a href="media/files/MyFirstJS.zip" download>
+        <button type="button" class="btn btn-primary btn-lg">My first js-script </button>
+        </a>
     <!-- End of your content -->
 
     </div> <!-- /container -->

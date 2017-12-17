@@ -760,7 +760,7 @@ xhr.onreadystatechange = function (){
         
 <h4>$.ajax() GET Requests I</h4>
         
-<p>You can also methods from the <b>jQuery library</b>, to simply the code for a request.</p>        
+<p>You can also methods from the <b>jQuery library</b>, to simply the code for a request. Use AJAX (JavaScript, but XML notation!).</p>        
         
         <div class="container">        
             <div class="col-sm-6">             
@@ -769,7 +769,75 @@ xhr.onreadystatechange = function (){
                 </a>
                 <legend>jQuery GET request</legend>
             </div>
-        </div>        
+        </div>    
+        
+<h4>$.ajax() POST Requests I</h4>
+        
+<p></p>
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/AJAX_request_POST_Jquery.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/AJAX_request_POST_Jquery.PNG" alt="image AJAX_request">   
+                </a>
+                <legend>jQuery POST request</legend>
+            </div>
+        </div>          
+        
+<h4>AJAX requests with $.get()</h4>
+        
+<pre>function expandUrl() {
+	const urlToExpand = url + '?key=' + apiKey + '&shortUrl=' + $inputField.val();
+  $.get(urlToExpand, response => {
+  $responseField.append('<p>Your expanded url is: </p><p>' +
+  response.longUrl + '</p>')}, 'json')
+}
+</pre>
+        
+<h4>AJAX requests with $.post()</h4>
+        
+<pre>  $.post({
+    url: urlWithKey,
+    data: JSON.stringify({longUrl: urlToShorten}),
+    dataType: 'json',
+    contentType: 'application/json',    
+    success(response){$responseField.append('<p>Your shortened url is: </p><p>' + response.id + '</p>');},
+    error(jqXHR,status,errorThrown){console.log(jqXHR)},
+  });</pre>        
+       
+<h4>AJAX Requests with $.getJSON()</h4>
+                
+<pre>function expandUrl() {
+	const urlToExpand = url + '?key=' + apiKey + '&shortUrl=' + $inputField.val();
+  $.getJSON(urlToExpand, response => {
+  $responseField.append('<p>Your expanded url is: </p><p>' +
+  response.longUrl + '</p>')})
+}</pre>
+        
+<h3>Review</h3>
+        
+<ol>
+    <li>JavaScript is the language of the web because of its asynchronous capabilities. A set of tools that are used together to take advantage of JavaScript's asynchronous capabilities is called AJAX, which stands for Asynchronous JavaScript and XML.</li>
+    <li>There are four HTTP request methods, two of which are GET and POST.</li>
+    <li>GET requests only request information from other sources.</li>
+    <li>POST methods can introduce new information to other sources in addition to requesting it.</li>
+    <li>GET requests can be written using an XMLHttpRequest object and vanilla JavaScript.</li>
+    <li>POST requests can also be written using an XMLHttpRequest object and vanilla JavaScript.</li>
+    <li>Writing GET and POST requests with XHR objects and vanilla JavaScript requires constructing the XHR object using new, setting the responseType, creating a function that will handle the response object, and opening and sending the request.</li>
+    <li>Much of the boilerplate used to write GET and POST requests with XHR and vanilla JavaScript can be reduced by using the $.ajax() method from the jQuery library.</li>
+    <li>jQuery provides other helper methods that can further reduce boilerplate such as $.get(), $.post(), and $.getJSON().</li>
+    <li>Determining how to correctly write the requests and how to properly implement them requires carefully reading the documentation of the API with which you're working.</li>
+</ol>
+        
+<h4>Fetch() GET requests</h4>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/fetch_GET_request.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/fetch_GET_request.PNG" alt="image fetch_GET_request">   
+                </a>
+                <legend>fetch GET request</legend>
+            </div>
+        </div>         
     
 </div> <!-- /container -->
       
