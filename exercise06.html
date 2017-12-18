@@ -107,10 +107,65 @@
         
     <h3>Redirecting input and output</h3>    
         
-        <p></p>
+        <p>In this lesson, we'll focus on input and output (I/O) redirection. You can combine input and output from different programs.</p>
+        
+<pre>$ echo "Hello" --> Hello</pre>
+        
+        <p>Standard input - <code>stdin</code></p>
+        <p>Standard output - <code>stdout</code></p>
+        <p>Standard error - <code>stderr</code></p>
+        
+    <p>The <code>></code> redirectes a stout to a file, in this case <b>hello.txt</b>.</p>
+        
+    <pre>$ echo "Hello" > hello.txt</pre>
+    
+    <p>The <code>cat</code> command outputs the file. If you use <code>></code> on0 a file, the file on the right hand side is overwritten.</p>    
+    
+    <p><code>>></code> add to the existing file content.</p>
+        
+<pre>$ cat glaciers.txt >> rivers.txt</pre>
+        
+    <p><code>&lt</code> inputs the content on the right and inputs it into the program on the left, e. g. cat.</p>
+        
+    <p><code>|</code> is the so-called pipe. Pipes standard output from left to the standard input on the right.</p>
+        
+    <p><code>sort</code> orders alphabetically.</p>
+        
+    <p><code>uniq</code> removes doubles.</p>
+        
+    <p><code>grep</code> stands for "global regular expression print". It searches for matching pattern, e. g. words within a file. <code>grep -i</code> makes it case insensitive.</p>
+        
+    <p><code>sed</code> stands for "stream editor". It is used to search and replace content.</p>
         
     <h3>Configuring the environment</h3>          
         
+    <p>Using nano as a command line editor. <b>~/.bash_profile</b> is the name of file used to store environment settings. The ~ represents the user's home directory. The . indicates a hidden file.</p>
+        
+<pre>source ~/.bash_profile</pre>
+        
+    <p>The source command activates the changes.</p>
+        
+    <p><code>Aliases</code> are shorcuts, e. g. alias pd="pwd". They need to be stored in the environmental variables.</p>
+        
+<pre>alias ll="ls -la"</pre>
+        
+<pre>export USER="Jane Doe"</pre>
+        
+    <ul>
+        <li>The line USER="Jane Doe" sets the environment variable USER to a name "Jane Doe". Usually the USER variable is set to the name of the computer's owner.</li>
+        <li>The line export makes the variable to be available to all child sessions initiated from the session you are in. This is a way to make the variable persist across programs.</li>
+        <li>At the command line, the command echo $USER returns the value of the variable. Note that $ is always used when returning a variable's value. Here, the command echo $USER returns the name set for the variable.</li>
+    </ul>
+    
+    <p><code>echo $HOME</code> returns the <b>HOME</b> variable. It displays the path of the home directory.</p>
+        
+    <p><code>$PATH</code> called with echo lists a number of directories separated by a colon. For example, many commands we've learned are scripts stored in the /bin directory.</p>
+        
+<pre>/bin/pwd</pre> is the <b>pwd</b> script.
+        
+<p><code>env</code> is the environment command. </p>
+        
+    
     <!-- End of your content -->
 
     </div> <!-- /container -->

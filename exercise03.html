@@ -837,8 +837,80 @@ xhr.onreadystatechange = function (){
                 </a>
                 <legend>fetch GET request</legend>
             </div>
-        </div>         
+        </div>  
+        
+<pre>// Include data for accessing Google APIs
+const apiKey = '&lt Your API Key>';
+const url = 'https://www.googleapis.com/urlshortener/v1/url';
+
+// Some page elements
+
+const $inputField = $('#input');
+const $expandButton = $('#expand');
+const $shortenButton = $('#shorten');
+const $responseField = $('#responseField');
+
+// AJAX functions
+
+function expandUrl() {
+	const urlToExpand = url + '?shortUrl=' + $inputField.val() + ' &amp;key=' + apiKey;
+  fetch(urlToExpand).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Request failed!');
+  }, networkError => console.log(networkError.message));
+};
+
+
+function shortenUrl() {
+
+};
+
+function expand() {
+  $responseField.empty();
+  expandUrl();
+  return false;
+};
+
+function shorten() {
+  $responseField.empty();
+  shortenUrl();
+  return false;
+};
+
+$expandButton.click(expand);
+$shortenButton.click(shorten);
+</pre>
     
+<h4>Fetch() POST requests</h4>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/fetch_POST_request.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/fetch_POST_request.PNG" alt="image fetch_GET_request">   
+                </a>
+                <legend>fetch POST request</legend>
+            </div>
+        </div> 
+        
+<p>Nested then function can be tricky.</p>
+        
+<pre>fetch('https://api-to-call.com/endpoint', {
+  method: 'POST',
+  body: JSON.stringify({id: '200'})
+}).then(response => {
+  	if(response.ok) {
+      return response.json();
+    }
+  	throw new Error('Request failed!');
+	}, networkError => console.log(networkError.message)
+).then(jsonResponse => jsonResponse);</pre>
+        
+<h4>async GET Requests</h4>
+        
+<p></p>
+        
 </div> <!-- /container -->
       
 	<!-- footer -->
