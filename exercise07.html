@@ -1,58 +1,162 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Name Surname">
+    <link rel="icon" href="media/favicon.ico">
 
-<head>
-  <meta charset="UTF-8">
-  <title>IBM Chatbot Demo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <meta name="theme-color" content="#4e8ef7">
-  <link rel="apple-touch-icon" href="/logo_evonik.png">
+    <title>JS Express</title>
 
-  <link href="style.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="script.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-</head>
+    <!-- Custom styles for this template -->
+    <link href="media/fabacademy.css" rel="stylesheet">
+    
+    <!-- 3D files viewer -->
+    <script type="text/javascript" src="media/jsc3d_ie.min.js"></script>
+	<script type="text/javascript" src="media/jsc3d.min.js"></script>
+    <script type="text/javascript" src="media/jsc3d.webgl.js"></script>
+    <script type="text/javascript" src="media/jsc3d.touch.js"></script>
 
-<body>
-  <div class="chat_window">
-    <div class="top_menu">
-      <div class="logo"><img src="logo_evonik.png" height="50px" width="50px" /></div>
-      <div class="title">IBM Chatbot Demo</div>
-      <div class="reload">Reset</div>
-    </div>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
-    <ul class="messages"></ul>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Load the menu file -->
+    <script>
+	function menu() {
+					  $('#exercises').load("exercises-menu.html");
+					  $('#project').load("project-menu.html");
+					  $('#cclicense').load("license.html");
+					  }
+	</script>
 
-    <div class="bottom_wrapper clearfix">
-      <div id="template_anchor"></div>
-      <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Neue Nachricht..." />
+  </head>
+
+  <body onload="menu()">
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Joern Kiwitt</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Exercises <span class="caret"></span></a>
+              <ul id="exercises" class="dropdown-menu" role="menu">
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Final Project <span class="caret"></span></a>
+              <ul id="project" class="dropdown-menu" role="menu">
+              </ul>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        </div><!--/.nav-collapse -->
       </div>
-      <div id="microphone_button" class="speak_message" style="margin-right:5px;">
-        <div class="icon"><img class="mic" src="/mic.png" /></div>
-      </div>
-      <div class="send_message">
-        <div class="icon"></div>
-        <div class="text">Send</div>
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  <div class="message_template">
-    <li class="message">
-      <div class="avatar"></div>
-      <div class="text_wrapper">
-        <div class="text"></div>
-        <div class="intent"></div>
-      </div>
-    </li>
-  </div>
-</body>
+    <div class="container">
 
+	<!-- Insert your content here below! -->
+
+
+    <h2>JS Express</h2>
+
+        <p>This documentation is based on the codecademy course on Express. It is recommended to read <a href="https://www.codecademy.com/articles/back-end-architecture">this</a> article for a bit of background information.In this course, you'll learn how to build HTTP servers in Node.js using the Express framework. Express allows you to start and configure a server with very little overhead and instead focus on the important work of defining server behavior.</p>
+
+        <p>You'll learn how to create routes to implement server behavior for different HTTP methods and paths. You'll also learn how to use Express's most powerful features, such as routers and middleware, in order to write clean and readable server-side code.</p>
+
+        <p>Why Learn Express?</p>
+
+        <p>With these skills, you'll be able to build APIs in JavaScript and implement the CRUD (create, retrieve, update, and delete) functionality which forms the backbone of modern-day apps. If you've ever wondered how to make a web app back-end or are looking to pick up a new back-end framework, this is the course for you! Express is a Node module, so in order to use it, we will need to import it into our program file. To create a server, the imported express function must be invoked.</p>
+        
+    <h3>What are the clients?</h3>
+
+        <p>The clients are anything that send requests to the back-end.</p>
+        
+    <h3>What is a back-end?</h3>
+
+        <p>The back-end is all of the technology required to process the incoming request and generate and send the response to the client. This typically includes three major parts:</p>
+
+        <ul>
+            <li>The server. This is the computer that receives requests.</li>
+            <li>The app. This is the application running on the server that listens for requests, retrieves information from the database, and sends a response.</li>
+            <li>The database. Databases are used to organize and persist data.</li>
+        </ul>
+    
+    <h3>What is a server?</h3>
+
+        <p>A server is simply a computer that listens for incoming requests.</p>
+    
+    <h3>What are the core functions of the app?</h3>
+
+        <p>The server runs an app that contains logic about how to respond to various requests based on the HTTP verb and the Uniform Resource Identifier (URI). The pair of an HTTP verb and a URI is called a route and   matching them based on a request is alled routing. Often, programmers will use a framework like Express or Ruby on Rails to simplify the logic of routing. </p>
+        
+    <h3>What is a database, and why do we need to use them?</h3>
+
+        <p>Databases are commonly used on the back-end of web applications. These databases provide an interface to save data in a persistent way to memory. Storing the data in a database both reduces the load on the main memory of the server CPU and allows the data to be retrieved if the server crashes or loses power.</p>
+
+        <p>Many requests sent to the server might require a database query. A client might request information that is stored in the database, or a client might submit data with their request to be added to the database.</p>
+        
+    <!-- End of your content -->
+
+    </div> <!-- /container -->
+
+	<!-- footer -->
+    
+    <footer id="footer">
+        <p id="cclicense">
+                </p>
+        <p class="license">
+        Theme: <a href="https://github.com/openp2pdesign/FabAcademy_Template">Fab Academy Template</a> by <a href="http://openp2pdesign.org">Massimo Menichinelli</a> <br>
+        Based on <a href="http://getbootstrap.com/">Twitter Bootstrap</a>+<a href="http://jquery.com/">JQuery</a>+<a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>+<a href="http://jmblog.github.io/color-themes-for-google-code-prettify/github/">GitHub theme for google-code-prettify</a>+<a href="https://code.google.com/p/jsc3d/">JSC3D</a>+<a href="https://github.com/thegrubbsian/jquery.ganttView">jquery.ganttView</a>.
+        </p>
+    </footer>
+    
+
+	<!-- Do not touch this! -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="media/jquery-1.9.1.min.js"></script>
+    
+    <!-- Syntax Highlighter -->
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js">
+    </script>
+    <!-- From https://github.com/jmblog/color-themes-for-google-code-prettify -->
+    <link href="media/github.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript">
+	  !function ($) {
+		$(function(){
+		  window.prettyPrint && prettyPrint()   
+		})
+	  }(window.jQuery)
+	</script>
+	
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
 </html>

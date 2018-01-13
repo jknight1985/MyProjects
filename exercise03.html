@@ -909,7 +909,93 @@ $shortenButton.click(shorten);
         
 <h4>async GET Requests</h4>
         
+<p></p>        
+   
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/Async_Await_GET.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/Async_Await_GET.PNG" alt="image fetch_GET_request">   
+                </a>
+                <legend>async GET request</legend>
+            </div>
+        </div>         
+        
+<pre>// AJAX functions
+async function expandUrl(){
+  const urlToExpand = url + '?shortUrl=' + $inputField.val() + '&amp;key=' + apiKey;
+  try{
+		let response = await fetch(urlToExpand);
+    if (response.ok){
+      let jsonResponse = await response.json();
+      $responseField.append('<p> Your expanded URL is </p><p>' + jsonResponse.longUrl+ '</p>');
+      return jsonResponse;
+    }
+  }
+  catch(error){
+    console.log(error);
+  };
+  
+};</pre>
+   
+<h4>async POST Requests I</h4>
+
 <p></p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/03_APIs/Async_Await_POST.PNG"> 
+                    <img class="img-thumbnail" src="media/images/03_APIs/Async_Await_POST.PNG" alt="image fetch_GET_request">   
+                </a>
+                <legend>async POST request</legend>
+            </div>
+        </div>          
+        
+<pre>async function getData(){
+  try{
+    let response = await fetch('https://api-to-call.com/endpoint',{
+      method: 'POST',
+      body: JSON.stringify({id: 200}),
+    });
+  } catch (error){
+    console.log(error);
+  }
+}</pre>    
+        
+<p>In this case:</p>
+        
+<pre>async function shortenUrl(){
+  const urlToShorten = $inputField.val();
+	const urlWithKey = url + '?key=' + apiKey;
+  
+  try{
+    let response = await fetch(urlWithKey,{
+      method: 'POST',
+      body: JSON.stringify({longUrl: urlToShorten}),
+      headers: {"Content-type": "application/json"},
+    });
+    if (response.ok){
+      let jsonResponse = await response.json();
+      $responseField.append('<p> Your shortened URL is </p><p>' + jsonResponse.id + '</p>');
+return jsonResponse;
+    }
+  } catch (error) {
+    console.log(error);
+  };
+};</pre>
+        
+<h3>Summary</h3>
+        
+<ul>
+    <li>GET and POST requests can be created a variety of ways.</li>
+    <li>We can asynchronously request data from APIs using AJAX. fetch() and async/await are new technologies developed in ES6 and ES7 respectively.</li>
+    <li>Promises are a new type of JavaScript object that represent data that will eventually be returned from a request.</li>
+    <li>fetch() is a web API that can be used to create requests. fetch() will return Promises.</li>
+    <li>We can chain .then() methods to handle Promises returned by fetch.</li>
+    <li>The .json() method converts a returned Promise to a JSON object.</li>
+    <li>async is a keyword that is used to create functions that will return Promises.</li>
+    <li>await is a keyword that is used to tell a program to continue moving through the message queue while a Promise resolves.</li>
+    <li>await can only be used within functions declared with async.</li>
+</ul>
         
 </div> <!-- /container -->
       
