@@ -13,3 +13,4 @@ I'm using a modified version of the Fabacademy template to document my future wo
 ## Notes
 Ajax functionalities won't work locally on Chrome because of "safety settings" (but will work online).
 # MyProjects
+# Test
