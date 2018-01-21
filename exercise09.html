@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Name Surname">
+    <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
     <title>Python</title>
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Name Surname</a>
+          <a class="navbar-brand" href="index.html">Joern Kiwitt</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -90,8 +90,85 @@
     <p>As in JS you need variables can be assigned without a data type.</p>
         
     <pre>my_int = 7</pre>
+        
+    <p>There is no ending semicolon. <b>Intentation</b> however plays quite a significant role! Not doing it will result in errors!</p>
+        
+    <pre>def spam():
+  eggs = 12
+  return eggs
+        
+print spam()</pre>
     
+    <p>Comments are indicated with the <code>#</code> sign. Triple quotation marks are for multiline comments.</p>
+        
+<pre>"""asdf"""</pre>
+        
+    <p><b>Math operators</b> are as you would expect, <code>+-*/</code>. <code>**</code> will give you the exponent.</p>
+        
+<pre>eggs = 10**2</pre>
+        
+    <p>The modulo <code>%</code> will give you the remainder of a division.</p>
+        
+    <h3>Strings & console output </h3>
+        
+    <p>Apostrophes need to be accompanied by a \ in order to interpret the string correctly.</p>
+    <pre>'This isn\'t flying, this is falling with style!'</pre>
+        
+    <p>You can use the index [] to access string characters. The index starts at <b>0</b>. The following statement will therefore return Y.</p>
+        
+<pre>fifth_letter = "MONTY"[4]</pre>
+        
+<h3>String methods</h3>
+        
+    <p>Methods that use dot notation only work with strings. E. g. </p>
+
+<pre>"HELLO".lower()</pre>
+        
+    <p>Methods like <b>len()</b> can work with any data type.</p>
+    
+    <p>Strings can be concatenated with the <code>+</code> operator.</p>
+        
+<pre>print "Life " + "of " + "Brian"</pre>
+        
+    <p>The % operator after a string is used to combine a string with variables. <code>%s</code> is replaced with the variable after the <code>%</code>.</p>
+    
+<pre>print "Let's not go to %s. 'Tis a silly %s." % (string_1, string_2)</pre>
+        
+<h3>Date & time</h3>
  
+    <p>Use the datetime library to access the current date.</p>
+        
+<pre>from datetime import datetime
+now = datetime.now()
+
+print '%s/%s/%s %s:%s:%s' % (now.month, now.day, now.year, now.hour, now.minute, now.second)</pre>
+        
+<h3>Conditional flow control</h3>
+        
+<p>You can use comparators:</p>
+        
+<pre>3 &lt 4
+5 >= 5
+10 == 10
+12 != 13
+</pre>
+
+<p>Boolean comparators</p>
+
+<pre>True or False 
+(3 &lt 4) and (5 >= 5)
+this() and not that()</pre>
+        
+<p>Conditional statements:</p>
+        
+<pre>if this_might_be_true():
+  print "This really is true."
+elif that_might_be_true():
+  print "That is true."
+else:
+  print "None of the above."
+</pre>
+        
     <!-- End of your content -->
 
     </div> <!-- /container -->
