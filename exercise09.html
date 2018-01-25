@@ -145,7 +145,7 @@ print '%s/%s/%s %s:%s:%s' % (now.month, now.day, now.year, now.hour, now.minute,
         
 <h3>Conditional flow control</h3>
         
-<p>You can use comparators:</p>
+    <p>You can use comparators:</p>
         
 <pre>3 &lt 4
 5 >= 5
@@ -169,6 +169,28 @@ else:
   print "None of the above."
 </pre>
         
+<h3>Function</h3>
+        
+    <p>A function has a header, an optional comment and a body.</p>
+
+<pre>def spam():	
+  	"""Print eggs to the console.""" 
+print "Eggs!"</pre>
+        
+    <p>You can import functions using the <code>import</code> command. If you only want to import a certain function, you may use:</p>    
+        
+<pre>from math import sqrt</pre>
+        
+    <p>That way, you can <code>sqrt()</code> instead of <code>math.sqrt</code>. By using <b>universal</b> import for the whole library, you can achieve the same result:</p>
+        
+<pre>from module import *</pre>
+        
+    <p>This is however dangerous, as might end up using a function from a different model. You can list the function in the module by typing: </p>
+        
+<pre>everything = dir(math)</pre>
+        
+    <p><code>Type</code> outputs the type of the variable, e. g. str, int, etc.</p>
+    
     <!-- End of your content -->
 
     </div> <!-- /container -->
