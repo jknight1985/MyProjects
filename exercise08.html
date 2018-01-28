@@ -8,7 +8,7 @@
     <meta name="author" content="Name Surname">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>---</title>
+    <title>jQuery</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +79,127 @@
     <div class="container">
 
 	<!-- Insert your content here below! -->
+        
+    <h2>jQuery - JavaScript library</h2>
 
+        <p>JavaScript is the most widely-used language for adding dynamic behavior to web pages. The JavaScript community contributes to a collection of libraries that extend and ease its use. In this course, you will learn about jQuery, a JavaScript library that makes it easy to add dynamic behavior to HTML elements. </p>
+        
+        <p>Example login functionality</p>
+        
+<pre>const login = document.getElementById('login');
+const loginMenu = document.getElementById('loginMenu');
+
+login.addEventListener('click', () => {
+  if(loginMenu.style.display === 'none'){
+    loginMenu.style.display = 'inline';
+  } else {
+    loginMenu.style.display = 'none';
+  }
+});</pre>
+        
+        <p>jQuery makes your life simpler:</p>
+        
+<pre>$('#login').click(() => {
+  $('#loginMenu').toggle()
+});</pre>
+        
+    <h3>jQuery methods</h3>
+        
+        <p>The pre-made Lego structures are like jQuery methods. You can use these methods to add dynamic behavior, such as <code>.hide()</code>, <code>.show()</code>, <code>.fadeIn()</code>, <code>.fadeOut()</code> etc., to HTML elements. </p>
+        
+        <p> It has become common practice to link the main JavaScript file <b>at the bottom</b> of the HTML document because a good deal of the content of the script will require that the dependencies, style sheets and elements exist before the browser can run the JavaScript that uses and references those things. </p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/08_jQuery/AddjQuery.PNG"> 
+                    <img class="img-thumbnail" src="media/images/08_jQuery/AddjQuery.PNG" alt="image AddjQuery">   
+                </a>
+                <legend>How to add jQuery</legend>
+            </div>
+        </div>
+        
+        <p>You can load jQuery using the respective <a href="https://code.jquery.com/">CDN</a>.</p>
+        
+    <h4>.ready()</h4>
+        
+        <p>a web page must be rendered in a user's browser before it's possible to have any dynamic behavior. To solve this problem, we will use our first jQuery method <code>.ready()</code>.</p>
+        
+        <p>When a web page is loaded, the browser creates a Document Object Model <b>DOM</b> of the page. </p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/08_jQuery/pic_htmltree.PNG"> 
+                    <img class="img-thumbnail" src="media/images/08_jQuery/pic_htmltree.PNG" alt="image pic_htmltree">   
+                </a>
+                <legend>DOM</legend>
+            </div>
+        </div>  
+        
+        <p>You should wrap all JavaScript behavior inside of the .ready() method. This will make sure the web page is rendered in the browser before any jQuery code executes in <b>main.js</b>. </p>
+
+            <pre>$(document).ready(() => {      
+            
+});</pre>
+        
+        <p>Document is the query object in this case. Typically, string, class, tag or ID is used. Here is a class example:</p>
+        
+            <pre>$('.someClass').handlerMethod();</pre>
+        
+        <p>Developers often save jQuery objects in variables, like so:</p>
+        
+            <pre>const $jQueryObject = $('.someClass');</pre>
+        
+        <p>It's best practice to start jQuery variables with an $-sign.</p>
+        
+    <h4>Event Handlers - .on()</h4>
+        
+        <p>The jQuery .on() method adds event handlers to jQuery objects.  The method takes two parameters: a string declaring the event to listen for (the handler) and a callback function to fire when the event is detected.</p>
+        
+<pre>$('#login').on('click', () => {
+  $loginForm.show();
+})</pre>
+        
+<h3>jQuery effects</h3>
+        
+    <p>Use the .toggle function to combine .show and .hide</p>    
+        
+<pre>  $('.toggle-button').on('click', () => {
+    $('.first-image').toggle();
+  });</pre>
+        
+    <p>With <code>fadeIn()</code> and <code>fadeOut()</code> you can hide and show with a time variable for effect.</p>
+        
+<pre> $('.fade-out-button').on('click', () => {
+    $('.fade-image').fadeOut(500);
+  });</pre>
+
+<h3>Review</h3>
+        
+<p>To review, the methods that we learned were:</p>
+
+    <ul>
+        <li>.hide()</li>
+        <li>.show()</li>
+        <li>.toggle()</li>
+    </ul>
+
+    <p>These methods instantly hide or show elements on a web page.</p>
+
+    <ul>        
+        <li>.fadeOut()</li>
+        <li>.fadeIn()</li>
+        <li>.fadeToggle()</li>
+    </ul>    
+
+    <p>These methods make elements disappear or appear over a given period of time.</p>
+
+    <ul>
+        <li>.slideUp()</li>
+        <li>.slideDown()</li>
+        <li>.slideToggle()</li>
+    </ul>        
+        
+        
     </div> <!-- /container -->
 
 	<!-- footer -->
