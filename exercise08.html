@@ -173,7 +173,7 @@ login.addEventListener('click', () => {
     $('.fade-image').fadeOut(500);
   });</pre>
 
-<h3>Review</h3>
+<h4>Review</h4>
         
 <p>To review, the methods that we learned were:</p>
 
@@ -198,6 +198,53 @@ login.addEventListener('click', () => {
         <li>.slideDown()</li>
         <li>.slideToggle()</li>
     </ul>        
+        
+        
+<h3>Mouse events</h3>
+        
+    <p>event handler = event listener + callback function</p>
+       
+<pre>$('.example-class').on('click', () => {
+    // Execute code here when .example-class is clicked
+});</pre>
+        
+    <p>The first argument is the event listener, the second (empty) one is the callback function.</p>
+     
+    <p> The <b>mouseenter</b> event is triggered by entering a class with the cursor.</p>
+        
+<pre>$('.menu-button').on('mouseenter', () => {
+    	$('.nav-menu').show();
+  });</pre>        
+        
+    <p><b>Mousehide</b> has the opposite effect.</p>
+        
+<pre>$('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+	});
+  </pre>
+        
+    <p>It is also possible to <b>chain</b> multiple events.</p>
+        
+<pre>$('.example-class').on('mouseenter', () => {
+  $('.example-class-one').show();
+}).on('mouseleave', () => {
+  $('.example-class-one').hide();
+});</pre>
+        
+
+    <p>But in order to address only the active element, use the <b>current target</b> selector:</p>
+        
+<pre>  $('.product-photo').on('mouseenter', event => {
+    $(event.currentTarget).addClass('photo-active')
+  }).on('mouseleave', event => {
+    $(event.currentTarget).removeClass('photo-active')
+  })</pre>
+        
+    <p>For more information consult <a href="http://jqapi.com/">jqapi</a>.</p>
+
+<h3>Style methods</h3>
+        
+    <p></p>
         
         
     </div> <!-- /container -->
