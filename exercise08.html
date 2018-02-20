@@ -244,8 +244,89 @@ login.addEventListener('click', () => {
 
 <h3>Style methods</h3>
         
-    <p></p>
+    <p>To modify CSS properties of an element, jQuery provides a method called <b>.css()</b></p>
         
+<pre>$('.example-class').css('color', '#FFFFFF');</pre>
+        
+    <p>You can also hand over value pairs.</p>
+        
+<pre>{
+  $('.nav-menu').on('mouseleave', () => {
+    $('.nav-menu').hide();
+    $('.menu-button').css({
+      color: '#EFEFEF',
+      backgroundColor: '#303030',
+    });
+  })
+}</pre>
+    
+<h4>.Animate()</h4>
+        
+    <p>The first argument passed to .animate() is a JavaScript object of CSS property/value pairs that represent an element's end state. The second argument is the time to reach the end state.</p>
+        
+<pre>$('.example-class').animate({
+  height: '100px',
+  width: '100px',
+  borderWidth: '10px'
+}, 500);</pre>
+        
+<h4>.addClass()</h4>
+    
+    <p>Avoid letting your code get to messy. Group the style code in the css file and add or remove the class from the element. This principle is called <b>separation of concerns</b>.</p>
+        
+    <p>Separation of concerns is a design principle stating that code should be separated based on its purpose in a program.</p>
+        
+<pre>$('.example-class').addClass('active');</pre>
+        
+    <p>In this case, the 'active' class (no period!) is added to the <b>.example-class</b>.</p>
+        
+<h4>.removeClass()</h4>
+        
+    <p>You can also hide classes using the remove function.</p>
+        
+<pre>$('.nav-menu').removeClass('nav-menu');
+</pre>
+        
+<h4>.toggleClass()</h4>
+        
+    <p>Use the toggle button to show and hide or add and remove.</p>
+        
+<pre>$('.nav-menu').toggleClass('hide')
+</pre>
+        
+<h3>Document object model (DOM)</h3>
+        
+    <p>The DOM is a tree of objects based on the HTML document that is created by the browser when it loads a page. Every element in this page exists on some branch of the tree.</p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/08_jQuery/DOM.PNG"> 
+                    <img class="img-thumbnail" src="media/images/08_jQuery/DOM.PNG" alt="image AddjQuery">   
+                </a>
+                <legend>DOM - Document object model</legend>
+            </div>
+        </div>        
+        
+<pre>&ltdiv class='parent'>
+  &ltdiv class='child' id='sibling1'>
+    &ltp class='grandchild'>&lt/p>
+  &lt/div>
+  &ltdiv class='child' id='sibling2'>&lt/div>
+  &ltdiv class='child' id='sibling3'>&lt/div>
+&lt/div>
+</pre>
+        
+<p>Understanding how elements relate to each other in the DOM makes it easy to efficiently select elements. We have covered several methods in this lesson including:</p>
+
+<ul>
+    <li>.children() to target an element's child elements.</li>
+    <li>.siblings() to target elements adjacent to an element.</li>
+    <li>.parent() to target an element's parent.</li>
+    <li>.closest() travels up the DOM tree from the current element to target the closest element with a given selector.</li>
+    <li>.next() to target the element immediately following the selected element.</li>
+    <li>.prev() to target the element that is immediately preceding the selected element.</li>
+    <li>.find() to target descendant elements by some selector, ie- class, id, tag etc.</li>
+</ul>
         
     </div> <!-- /container -->
 
