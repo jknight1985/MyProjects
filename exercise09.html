@@ -190,7 +190,89 @@ print "Eggs!"</pre>
 <pre>everything = dir(math)</pre>
         
     <p><code>Type</code> outputs the type of the variable, e. g. str, int, etc.</p>
+        
+<h3>Lists</h3>
+        
+    <p>Using <code>append</code> you can add items to a list.</p>
+        
+<pre>letters = ['a', 'b', 'c']
+letters.append('d')</pre>
+        
+    <p>Use the <code>len</code> function to get back the length of a list.</p>
+        
+<pre>list_length = len(suitcase) # Set this to the length of suitcase
+</pre>
     
+    <p>When addressing only parts of a list, the first indicator is started with, the last one is not taking into consideration. Following expressions will therefore only contain two entries.</p>
+        
+<pre>last =  suitcase[4:6]</pre>
+        
+    <p>To include all following entries, just leave the end indicator empty:</p>
+        
+<pre>frog = animals[6:]</pre>
+        
+<h4>Index & insert</h4>
+        
+    <p>By using <code>index()</code> you find the index value of an object in a list. <code>Insert</code> let's you insert an element at a specific position, pushing following elements backwards.</p>
+        
+<pre>animals = ["aardvark", "badger", "duck", "emu", "fennec fox"]
+duck_index =  animals.index("duck")
+
+# Your code here!
+animals.insert(duck_index, "cobra")</pre>        
+      
+<h4>For-Loops</h4>
+        
+    <p>For-Loops use very little amount of code, just give a name to the item of entry and the list name. The orders after the <code>:</code> will be executed on each element.</p>
+        
+    <pre>for number in my_list:
+  # Your code here
+  print 2*number</pre>
+        
+<h4>Sort</h4>
+        
+    <p>List can be sorted by appending <code>.sort()</code>.</p>
+    
+<h4>Dictionaries</h4>
+        
+    <p>You can access an entry via its <b>key</b></p>
+        
+<pre>residents = {'Puffin' : 104, 'Sloth' : 105, 'Burmese Python' : 106}
+print residents['Puffin'] # Prints Puffin's room number</pre>
+        
+    <p>An empty pair of curly braces {} is an empty dictionary, just like an empty pair of [] is an empty list.</p>        
+    
+    <p>You can delete entries by addressing the key.</p>
+        
+<pre>del zoo_animals['Bengal Tiger']</pre>
+        
+    <p>Or remove by item name</p>
+        
+<pre>backpack.remove('dagger')</pre>
+        
+<h3>Lists & functions</h3>
+        
+    <p><code>pop</code> let's you remove a the indexed item, while <code>.remove</code> addresses the item by its content. <code>del</code> is like <code>pop</code>.</p>
+
+    <p>To address a an element of a list in for loop, use this code</p>
+        
+<pre>def double_list(x):
+  for i in range(0, len(x)):
+  	x[i] = x[i]*2
+  return x</pre>
+        
+    <h4>Range object</h4>
+        
+        <p>The range function has three different versions:</p>
+            
+            <ul>
+                <li>range(stop)</li>
+                <li>range(start, stop)</li>
+                <li>range(start, stop, step)</li>
+            </ul>
+        
+        <p>In all cases, the range() function returns a list of numbers from start up to (but not including) stop. Each item increases by step. If omitted, start defaults to 0 and step defaults to 1.</p>
+        
     <!-- End of your content -->
 
     </div> <!-- /container -->
