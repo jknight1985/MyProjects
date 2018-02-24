@@ -233,7 +233,7 @@ animals.insert(duck_index, "cobra")</pre>
         
     <p>List can be sorted by appending <code>.sort()</code>.</p>
     
-<h4>Dictionaries</h4>
+<h3>Dictionaries</h3>
         
     <p>You can access an entry via its <b>key</b></p>
         
@@ -250,6 +250,16 @@ print residents['Puffin'] # Prints Puffin's room number</pre>
         
 <pre>backpack.remove('dagger')</pre>
         
+    <h4>.items() and .keys()</h4>
+        
+        <p>While <b>.items()</b> returns an array of tuples with each tuple consisting of a key/value pair from the dictionary:</p>
+
+        <ul>
+            <li>The <b>.keys()</b> method returns a list of the dictionary's keys, and</li>
+            <li>The <b>.values()</b> method returns a list of the dictionary's values.</li>
+        </ul>
+    
+
 <h3>Lists & functions</h3>
         
     <p><code>pop</code> let's you remove a the indexed item, while <code>.remove</code> addresses the item by its content. <code>del</code> is like <code>pop</code>.</p>
@@ -275,6 +285,88 @@ print residents['Puffin'] # Prints Puffin's room number</pre>
         
     <!-- End of your content -->
 
+<h4>Join</h4>
+        
+    <p>With the join function, you can combine several cells. The sign in marked <code>" "</code> is the seperation value.</p>
+        
+<pre>board_in[x]=" ".join(board_in[x])
+</pre>
+        
+<h3>Loops</h3>
+        
+    <p>While loops count until the condition is no longer true.</p>
+        
+<pre>while count &lt 10:
+  print "Hello, I am a while and count is", count
+  count += 1</pre>
+        
+    <p><code>Break</code> can also be used as a statement to stop a loop.</p>
+        
+<h4>While/Else</h4>
+        
+    <p>It is also possible to combine while and else. Once your condition is true, the else block will be executed.</p>
+        
+<pre>count = 0
+while count &lt 3:
+  num = random.randint(1, 6)
+  print num
+  if num == 5:
+    print "Sorry, you lose!"
+    break
+  count += 1
+else:
+  print "You win!"</pre>
+        
+    <p>After three executed blocks without a 5, the else is executed.</p>
+        
+<h4>Zip</h4>
+        
+    <p>You can use zip to iterate through multiple lists.</p>
+        
+<pre>for a, b in zip(list_a, list_b):</pre>
+        
+    <h4>in-operator</h4>
+        
+        <p>Very intuitive...</p>
+        
+    <h4>list comprehensions</h4>
+        
+        <p>Build lists according to condition, e. g. even only.</p>
+        
+<pre>evens_to_50 = [i for i in range(51) if i % 2 == 0]
+print evens_to_50</pre>
+        
+<pre>for key in my_dict:
+  print key, my_dict[key]</pre>
+        
+    <h4>List slicing</h4>
+        
+        <p>Print only parts of a list, [start:end:stride]:</p>
+        
+    <h4>Reverse order</h4>
+        
+<pre>backwards = my_list[::-1]</pre>
+        
+<pre>print l[2:9:2]</pre>
+        
+    <h4>Anonymous function</h4>
+        
+        <p>Short form:</p>
+        
+<pre>lambda x: x % 3 == 0
+</pre>
+
+        <p>Same as: </p>
+        
+<pre>def by_three(x):
+  return x % 3 == 0
+</pre>
+        
+        <p>But...function does not need to be defined. Using <b>filter</b>, you can take a second argument to use the anonymous function on:</p>
+        
+<pre>print filter(lambda x: x % 3 == 0, my_list)</pre>
+        
+        
     </div> <!-- /container -->
 
 	<!-- footer -->
