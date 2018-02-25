@@ -366,7 +366,78 @@ print evens_to_50</pre>
         
 <pre>print filter(lambda x: x % 3 == 0, my_list)</pre>
         
+<h3>Bitwise operators</h3>
         
+    <p>Bitwise operations are operations that directly manipulate bits.</p>
+        
+<pre>print 5 >> 4  # Right Shift
+print 5 << 1  # Left Shift
+print 8 & 5   # Bitwise AND
+print 9 | 4   # Bitwise OR
+print 12 ^ 42 # Bitwise XOR
+print ~88     # Bitwise NOT</pre>
+        
+    <p>Base 2 description:</p>
+        
+<pre>print 0b1,    #1
+print 0b10,   #2
+print 0b11,   #3
+print 0b100,  #4
+print 0b101,  #5
+print 0b110,  #6
+print 0b111   #7
+print "******"
+print 0b1 + 0b11
+print 0b11 * 0b11</pre>
+        
+    <p>The <b>bin()</b> function will give you the binary representation of an integer.</p>    
+        
+<pre>print bin(1)</pre>
+        
+    <p>The second parameter of the <b>int()</b> function will give you the decimal representation.</p>
+        
+<pre>print int("0b11001001",2)</pre>
+        
+    <p>Shifting left & right:</p>
+        
+<pre># Left Bit Shift (&lt&lt)  
+0b000001 &lt&lt 2 == 0b000100 (1 &lt&lt 2 = 4)
+0b000101 &lt&lt 3 == 0b101000 (5 &lt&lt 3 = 40)       
+
+# Right Bit Shift (>>)
+0b0010100 >> 3 == 0b000010 (20 >> 3 = 2)
+0b0000010 >> 2 == 0b000000 (2 >> 2 = 0)</pre>
+        
+    <p>The <b>AND</b> operator: </p>
+        
+<pre>0 & 0 = 0
+0 & 1 = 0
+1 & 0 = 0
+1 & 1 = 1
+</pre>
+
+    <p>The <b>OR</b> operator: </p>
+        
+<pre>0 | 0 = 0
+0 | 1 = 1 
+1 | 0 = 1
+1 | 1 = 1
+</pre>
+    
+    <p>The <b>XOR</b> operator (exclusive, either but not both):</p>
+        
+<pre>0 ^ 0 = 0
+0 ^ 1 = 1
+1 ^ 0 = 1
+1 ^ 1 = 0</pre>        
+        
+    <p>The <b>NOT</b> operator flips als "0" bits.</p>
+        
+<pre>print ~1
+print ~2
+print ~3
+print ~42
+print ~123</pre>
     </div> <!-- /container -->
 
 	<!-- footer -->
