@@ -438,8 +438,74 @@ print ~2
 print ~3
 print ~42
 print ~123</pre>
-    </div> <!-- /container -->
+        
+    <h3>Classes</h3>
+        
+        <p>Classes have attributes. A basic class consists only of the class keyword, the name of the class, and the class from which the new class <b>inherits</b> in parentheses.</p>
 
+        <pre>class NewClass(object):
+  # Class magic here
+</pre>
+
+        <p>The <code>__init__()</code> function initializes the object. It holds at least one argument <code>self</code>, which stands for this particular object.</p>
+        
+<pre>class Animal(object):
+  def __init__(self, name):
+    self.name = name
+    
+zebra = Animal("Jeffrey")
+print zebra.name</pre>
+        
+    <h4>Scope of a variable</h4>
+        
+        <p>Note that each individual animal gets its own <b>name</b> and <b>age</b> (since they're all initialized individually), but they all have access to the member variable is_alive, since they're all members of the <b>Animal</b> class.</p>
+        
+<pre>class Animal(object):
+  """Makes cute animals."""
+  is_alive = True
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age</pre>
+        
+    <h4>Inheritance</h4>
+        
+        <p>The class <b>ReturningCustomer</b> inherits methods from the parental class <b>Customer</b>. These then don't need to be redefined.</p>
+        
+<pre>class ReturningCustomer(Customer):
+  """For customers of the repeat variety."""
+  def display_order_history(self):
+    print "I'm a string that stands in for your order history!"</pre>
+        
+    <h4>Override</h4>
+        
+        <p>You can also override function to suit the needs of the derived class.</p>
+        
+<pre>class Employee(object):
+  """Models real-life employees!"""
+  def __init__(self, employee_name):
+    self.employee_name = employee_name
+
+  def calculate_wage(self, hours):
+    self.hours = hours
+    return hours * 20.00
+
+# Add your code below!
+class PartTimeEmployee(Employee):
+  def calculate_wage(self, hours):
+    self.hours = hours
+    return hours * 12.00</pre>
+        
+        <p>However, you can still call the base class function by using the keyword <b>super</b>.</p>
+        
+<pre>class Derived(Base):
+  def m(self):
+    return super(Derived, self).m()</pre>
+        
+        <p><b>m.()</b> is the method from the base class or the following case <b>calculate_wage(hours)</b>. Don't forget to mention the argument!</p>
+        
+<pre>  def full_time_wage(self, hours):
+    return super(PartTimeEmployee, self).calculate_wage(hours)</pre>
+        
 	<!-- footer -->
     
     <footer id="footer">
