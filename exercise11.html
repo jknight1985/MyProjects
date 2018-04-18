@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Name Surname">
+    <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>Fab Academy 2015 - Name Surname</title>
+    <title>Dog machine</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Name Surname</a>
+          <a class="navbar-brand" href="index.html">Joern Kiwitt</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -80,138 +80,130 @@
 
 	<!-- Insert your content here below! -->
 
+    <h1>The idea</h1>
+        
+        <p>Build a simple machine as a reward system for dog training. </p>
+        
+    <h2>The network - ESP8266</h2>
+        
+        <p>I would like to let my nodes connect via the ESP8266. This requires a server node that connects to client nodes as well as a computer or mobile device for the control. I started by downloading the ESP8266 board from <a href="https://learn.sparkfun.com/tutorials/esp8266-thing-hookup-guide/installing-the-esp8266-arduino-addon">this address</a>, so that I can use the Arduino environment. </p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/11_DogMachine/ESP_IDE_Arduino.PNG"> 
+                    <img class="img-thumbnail" src="media/images/11_DogMachine/ESP_IDE_Arduino.PNG" alt="image ESP_IDE_Arduino">   
+                </a>
+                <legend>ESP board installtion</legend>
+            </div>
+        </div>    
+        
+        <p>Driver to be found <a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">here</a>.</p>
+        
+        <p>I started with the simplest program possible. The delay of one second is <b>imperative</b>, as I learned after one day of trying!</p>
+        
+        <p>This function returns following codes to describe what is going on with Wi-Fi connection, taken from <a href="http://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html">here</a>:</p>
+        
+        <ul> 
+            <li>0 : WL_IDLE_STATUS when Wi-Fi is in process of changing between statuses</li>
+            <li>1 : WL_NO_SSID_AVAILin case configured SSID cannot be reached</li>
+            <li>3 : WL_CONNECTED after successful connection is established</li>
+            <li>4 : WL_CONNECT_FAILED if password is incorrect</li>
+            <li>6 : WL_DISCONNECTED if module is not configured in station mode</li>
+        </ul>
+        
+<pre>#include &ltESP8266WiFi.h>
 
-     <h2>Exercise...</h1>
-    
-    <h3>Menu</h3>
-	<p>
-	You can edit it by changing the <em>exercises-menu.html</em> and <em>project-menu.html</em>. Do <strong>not</strong> add any &ltol&gt; or &ltul&gt;, leave the structure as it is.
-	</p>
-    
-    
-    <h3>Text</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp&gt;
-	Your text here
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p>
-	Your text here
-	</p>
-	
-	<h3>Images</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
-     
-	<h3>Code</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	
-	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
+char* ssid = "Skynet";
+char* password = "78708497278396651693";
 
-		# Add edges...
-		print "Building the graph..."
+void setup()
+{
+    WiFi.begin(ssid, password);
+    Serial.begin(115200);
+    delay(1000);
 
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
-	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
-	</p>
-	
-	<h3>3D Model</h3>
-	<p>	
-	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltcanvas id="cv" width=640 height=480&gt;
-	It seems you are using an outdated browser that does not support canvas :-(
-	&lt/canvas&gt;
-	&ltscript type="text/javascript"&gt;
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	&lt/script&gt;</pre>
-	
-	You can set up the path to the 3D model (.stl/.obj) within this line:
-	<pre class="prettyprint linenums">
-	viewer.setParameter('SceneUrl','media/monkey.stl');</pre>
-	
-	Result:
-	<canvas id="cv" width=640 height=480>
-	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	</script> 
-    </p> 
+    while(WiFi.status()!=WL_CONNECTED);
+    {
+        Serial.print(".ha");
+        delay(500);
+    }
     
-    <h3>Download</h3>
-	<p>
-	You can set up a button for files to be downloaded with:
-	<pre class="prettyprint linenums">
-	&lta href="#"&gt;
-	&ltbutton type="button" class="btn btn-primary btn-lg">Download the file&lt/button&gt;
-	&lt/a&gt;</pre>
-	</p>
-	
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
-      
-    <h3>Would you like to insert more style/elements?</h3>
-      <p>
-      Check the documentation of Bootstrap <a href="">here</a>.
-      </p>
+    Serial.println("");
+    Serial.print("IP Address: ");
+    
+    Serial.print(WiFi.localIP());
+}
+
+void loop()
+{
+    
+}</pre>
+
+<p>Now, let's make our ESP8266 a webserver by adding a library <code>ESP8266WebServer.h</code> and an object.</p>
+
+<pre>#include &ltESP8266WiFi.h>
+#include &ltESP8266WebServer.h>
+
+// Add a route
+ESP8266WebServer server;
+
+char* ssid = "Skynet";
+char* password = "78708497278396651693";
+
+void setup()
+{
+    WiFi.begin(ssid, password);
+    Serial.begin(115200);
+    delay(1000);
+
+    while(WiFi.status()!=WL_CONNECTED);
+    {
+        Serial.print(".ha");
+        delay(500);
+    }
+    
+    Serial.println("");
+    Serial.print("IP Address: ");
+    Serial.print(WiFi.localIP());
+    Serial.println("");
+    Serial.print("WiFi Status:");
+    Serial.print(WiFi.status());
+    Serial.println("");
+    Serial.print("WL_Connected:");
+    Serial.print(WL_CONNECTED);
+    server.on("/",[](){server.send(200,"text/plain","Hello World!");});
+    server.begin();
+}
+
+void loop()
+{
+    server.handleClient();
+}</pre>
+        
+<p>This kept causing problem, so I trying the simple webserver demo sketch from the Arduino example repository. This worked fine, so there seemed to be no hardware defect. I think that it might have to do with the two libraries, <b>ESP8266WiFi</b> and <b>ESP8266WebServer</b>. The Arduino example only uses the first one and performs as expected.</p>  
+        
+<h3>Learning more about the ESP8266 examples</h3>
+        
+    <p>I wanted to get a better basic understanding about webservers and clients. So, I started off with this video about the Arduino examples of ESP8266.</p>
+        
+    <div class="videowrap">   
+        <div class="embed-container">         
+            <iframe src="https://www.youtube.com/embed/dsmMzS3Qvg0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="text-center">
+        <legend>Example Arduino explained</legend>
+    </div>        
+
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/11_DogMachine/LearningAboutESP8266WIFI.png"> 
+                <img class="img-thumbnail" src="media/images/11_DogMachine/LearningAboutESP8266WIFI.PNG" alt="image LearningAboutESP8266WIFI">   
+            </a>
+            <legend>ESP Wifi examples</legend>
+        </div>
+    </div>              
+        
     <!-- End of your content -->
 
     </div> <!-- /container -->

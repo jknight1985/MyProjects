@@ -114,3 +114,46 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.embed-container {
+  position: relative; 
+  padding-bottom:56.25%; /* ratio 16x9 */
+  height:0; 
+  overflow:hidden; 
+  /*width:100%;
+  height:auto;*/
+}
+.embed-container iframe {
+  position:absolute; 
+  top:0; 
+  left:0; 
+  width:100%; 
+  height:100%; 
+ /* max-height: 280px;*/
+}
+
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+.videowrap{
+    width: 80%;
+    max-width: 640px; 
+    margin: 0 auto;
+}
+
+.videomp4 {  
+   width:100%; 
+   max-width:500px; 
+   height:auto; 
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    max-width: 50%;
+}
+th, td {
+    padding: 10px;
+}
