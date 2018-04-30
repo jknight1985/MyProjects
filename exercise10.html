@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Name Surname">
+    <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>Fab Academy 2015 - Name Surname</title>
+    <title>Angular JS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Name Surname</a>
+          <a class="navbar-brand" href="index.html">Joern Kiwitt</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -81,11 +81,85 @@
 	<!-- Insert your content here below! -->
 
 
-     <h3>AngularJS</h3>
+    <h1>AngularJS</h1>
+        
+    <h2>Introduction</h2>
         
         <p>I started with the Codecademy Tutorial you can find <a href="https://www.codecademy.com/courses/learn-angularjs/lessons/your-first-app/exercises/your-first-app-hello-angularjs-i?action=resume_content_item">here</a>.</p>
+        
+        <p>According to the tutorial, AngularJS is a JavaScript web framework aimed to make web apps simple to build and easy to maintain.</p>
     
+        <p>But let's go through it step by step.</p>
+    
+    <h2>Building an app</h2>
+        <p>1. In <b>app.js</b> you create a module named <b>myApp</b>. It contains the different components of an AngularJS app.</p>
+        
+        <pre>var app = angular.module("myApp", []);</pre>
 
+        <p>2. In the <b>index.html</b> we added <code>&ltbody ng-app="myApp"></code>. The ng-app is called a <b>directive</b>. It tells AngularJS that the myApp module will live within the <code>&ltbody></code> element, termed the <b>application's scope</b>. In other words, we used the <b>ng-app</b> directive to define the application scope.</p>
+        
+        <p>3. In <b>MainController.js</b> we created a new controller named MainController. A controller manages the app's data. Here we use the property title to store a string, and attach it to $scope.</p>
+        
+        <p>4, in <b>index.html</b>, we added <code>&ltdiv class="main" ng-controller="MainController"></code>. Like ng-app, ng-controller is a directive that defines the controller scope. This means that properties attached to $scope in MainController become available to use within <code>&ltdiv class="main"></code>.</p>
+        
+        <p>5. Inside <code>&ltdiv class="main"></code> we accessed $scope.title using {{ title }}. This is called an <b>expression</b>. Expressions are used to display values on the page.</p>
+        
+        <div class="container">        
+            <div class="col-sm-6">             
+                <a href="media/images/10_AngularJS/AppTitle.PNG"> 
+                    <img class="img-thumbnail" src="media/images/10_AngularJS/AppTitle.PNG" alt="image AppTitle">   
+                </a>
+                <legend>App displaying title</legend>
+            </div>
+        </div>          
+        
+        <p>You can attach further properties to the scope, such as (MainController):</p>
+        
+        <pre>app.controller('MainController', ['$scope', function($scope) { 
+  $scope.title = 'Your string'; 
+  $scope.promo = '10 % off';
+}]);</pre>
+        
+        <p>and display it by adding it to the index.html:</p>
+        
+<pre>
+&ltdiv class="main" ng-controller="MainController">
+
+  &ltdiv class="container">
+
+    &lth1>{{ title }}&lt/h1>
+    &lth2>{{ promo }}&lth2>
+
+  &lt/div>
+&lt/div></pre>
+
+<h2>Summary of the workflow</h2>
+        
+    <p>The standard workflow of creating an AngularJS app looks like this:</p>
+        
+    <ol>
+        <li>Create a module, and use ng-app in the view to define the application scope.</li>
+        <li>Create a controller, and use ng-controller in the view to define the controller scope.</li>
+        <li>Add data to $scope in the controller so they can be displayed with expressions in the view.</li>
+    </ol>
+        
+    <p>Add a new property to the MainController:</p>
+        
+<pre>
+$scope.product = { 
+      name: 'The Book of Trees', 
+      price: 19 
+};</pre>
+        
+    <p>And call it in the index.html:</p>
+        
+<pre>
+    &ltp class="title">{{ product.name }}&lt/p>
+</pre>
+        
+    <p>The class title is just for design matters.</p>
+
+        
     <!-- End of your content -->
 
     </div> <!-- /container -->
