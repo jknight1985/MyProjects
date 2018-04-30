@@ -159,7 +159,177 @@ $scope.product = {
         
     <p>The class title is just for design matters.</p>
 
+<h2>Filters</h2>        
         
+    <p>BY using a filter (pipe symbol), we format a number as a currency. In this way, filters help to separate the content in the controller from its presentation in the view.</p>
+        
+<pre>&ltp class="price">{{ product.price | currency}}&lt/p>
+</pre>
+      
+    <p>Here is another examples.</p>
+      
+    <p>index.html:</p>
+      
+<pre>&ltp class="date">{{ product.pubdate | date }}&lt/p>
+</pre>
+    
+    <p>MainControler.js:</p>
+      
+<pre>$scope.product = { 
+      name: 'The Book of Trees', 
+      price: 19 ,
+    	pubdate: new Date('2014', '03', '08')
+    };</pre>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/Filters.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/Filters.PNG" alt="image Filters">   
+            </a>
+            <legend>Date filter display</legend>
+        </div>
+    </div>  
+        
+<h2>My first app</h2>
+        
+    <h3>ng-repeat</h3>
+        
+    <p>Some vocabulary</p>
+        
+        <ul>
+            <li>A <b>module</b> contains the different components of an AngularJS app</li>
+            <li>A <b>controller</b> manages the app's data</li>
+            <li>An <b>expression</b> displays values on the page</li>
+            <li>A <b>filter</b> formats the value of an expression</li>
+        </ul>
+        
+    <p><b>ng-repeat</b> is a directive. It loops through an array and displays. That way, we don't have to repeat html code in the index.</p>
+        
+<pre>&ltdiv class="main" ng-controller="MainController">
+      &ltdiv ng-repeat="product in products" class="col-md-6"> 
+        &ltdiv class="thumbnail"> 
+          &ltimg ng-src="i{{ product.cover }}"> 
+          &ltp class="title">{{ product.name }}&lt/p> 
+          &ltp class="price">{{ product.price | currency }}&lt/p> 
+          &ltp class="date">{{ product.pubdate | date }}&lt/p> 
+        &lt/div> 
+    	&lt/div>
+    &lt/div>
+</pre>
+
+    <p>Controller code:</p>
+        
+<pre>  $scope.products = [ 
+  { 
+    name: 'The Book of Trees', 
+    price: 19, 
+    pubdate: new Date('2014', '03', '08'), 
+    cover: 'img/the-book-of-trees.jpg' 
+  }, 
+  { 
+    name: 'Program or be Programmed', 
+    price: 8, 
+    pubdate: new Date('2013', '08', '01'), 
+    cover: 'img/program-or-be-programmed.jpg' 
+  } 
+]</pre>
+        
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/Directives_Ngrepeat.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/Directives_Ngrepeat.PNG" alt="image Directives_Ngrepeat">   
+            </a>
+            <legend>ng-repeat directive display</legend>
+        </div>
+    </div>        
+        
+    <p>By using the product's attributes in the index file, the correct content is being displayed.</p>
+        
+    <h3>Like button</h3>
+        
+    <p>Index.html</p>
+        
+<pre>&ltp class="likes" ng-click="plusOne($index)"> {{ product.likes }}</p> </pre>
+  
+    <p>Controller</p>
+        
+<pre>$scope.plusOne = function(index) {
+      $scope.products[index].likes += 1; };
+}</pre>
+      
+    <p>The result lets you "like" a book.</p>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/Like.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/Like.PNG" alt="image like">   
+            </a>
+            <legend>Like button</legend>
+        </div>
+    </div>   
+      
+    <p>How does it work? The <b>ng-click</b> is a directive. When <code>&ltp class="likes"></code> is clicked, <b>ng-click</b> tells AngularJS to run the <code>plusOne()</code> function in the controller.</p>
+      
+    <p>The <b>plusOne()</b> function gets the index of the product that was clicked, and then adds one to that product's likes property.</p>
+      
+    <h3>Summary of user interaction</h3>
+      
+    <ul>
+        <li>A user visits the AngularJS app.</li>
+        <li>The view presents the app's data through the use of expressions, filters, and directives. Directives bind new behavior HTML elements.</li>
+        <li>A user clicks an element in the view. If the element has a directive, AngularJS runs the function.</li>
+        <li>The function in the controller updates the state of the data.</li>
+        <li>The view automatically changes and displays the updated data. The page doesn't need to reload at any point.</li>
+    </ul>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/summary_angular.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/summary_angular.PNG" alt="image summary_angular">   
+            </a>
+            <legend>How AngularJS works</legend>
+        </div>
+    </div>         
+        
+    <h2>Directives</h2>
+      
+    <p><b>appinfo.js</b>:</p>
+      
+    <pre>app.directive('appInfo', function() { 
+      return { 
+        restrict: 'E', 
+        scope: { 
+          info: '=' 
+        }, 
+        templateUrl: 'js/directives/appInfo.html' 
+      }; 
+    });</pre>      
+      
+    <p><b>restrict</b> specifies how the directive will be used in the view. The 'E' means it will be used as a new HTML element.</p>
+    <p><b>scope</b> specifies that we will pass information into this directive through an attribute named info. The = tells the directive to look for an attribute named info in the <code>&ltapp-info></code> element, like this:</p>
+      
+<pre>&ltapp-info info="shutterbugg">&lt/app-info></pre>
+      
+    <p>The data in info becomes available to use in the template given by templateURL. It is held in this file (appInfo.html), which defines the display of the object.</p>
+      
+<pre>&ltimg class="icon" ng-src="{{ info.icon }}"> 
+&lth2 class="title">{{ info.title }}&lt/h2> 
+&ltp class="developer">{{ info.developer }}&lt/p> 
+&ltp class="price">{{ info.price | currency }}&lt/p>
+</pre>
+
+      <p>Then in index.html we use the new directive as the HTML element <code>&ltapp-info></code>. We pass in objects from the controller's scope ($scope.shutterbugg) into the <code>&ltapp-info></code> element's info attribute so that it displays.</p>
+ 
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/Directives_appInfo.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/Directives_appInfo.PNG" alt="image Directives_appInfo">   
+            </a>
+            <legend>Resulting display</legend>
+        </div>
+    </div>        
+
+      
     <!-- End of your content -->
 
     </div> <!-- /container -->
