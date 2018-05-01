@@ -208,7 +208,7 @@ $scope.product = {
 <pre>&ltdiv class="main" ng-controller="MainController">
       &ltdiv ng-repeat="product in products" class="col-md-6"> 
         &ltdiv class="thumbnail"> 
-          &ltimg ng-src="i{{ product.cover }}"> 
+          &ltimg ng-src="{{ product.cover }}"> 
           &ltp class="title">{{ product.name }}&lt/p> 
           &ltp class="price">{{ product.price | currency }}&lt/p> 
           &ltp class="date">{{ product.pubdate | date }}&lt/p> 
@@ -329,8 +329,285 @@ $scope.product = {
         </div>
     </div>        
 
+<h2>Interactive directives</h2>
+      
+    <p>Directives are a core feature of AngularJS. So far we've used custom directives to simply display static content, but they can do more than this. It's possible to bake interactivity into directives. So here is our own directive.</p>
+      
+<pre>app.directive('installApp', function() {
+	return { 
+  	restrict: 'E',
+    scope: {},
+  	templateUrl: 'js/directives/installApp.html'
+  };
+});</pre>
+      
+    <p>The new directive then needs to be included in the <b>index.html</b> file:</p>
+      
+<pre>&ltscript src="js/directives/installApp.js">&lt/script></pre>
+      
+    <p>Now, a fourth option is required for the code to work. The <code>link</code> is used to create interactive directives that respond to user actions.</p>
+      
+<pre>app.directive('installApp', function() {
+	return { 
+  	restrict: 'E',
+    scope: {},
+  	templateUrl: 'js/directives/installApp.html',
+    link: function(scope, element, attrs) { 
+      scope.buttonText = "Install", 
+      scope.installed = false, 
+
+      scope.download = function() { 
+        element.toggleClass('btn-active'); 
+        if(scope.installed) { 
+          scope.buttonText = "Install"; 
+          scope.installed = false; 
+        } else { 
+          scope.buttonText = "Uninstall"; 
+          scope.installed = true; 
+        } 
+      } 
+    }
+  };
+});</pre>
+      
+    <p>The link function takes three inputs:</p>
+      
+    <ul>
+        <li><b>scope</b> refers to the directive's scope. Any new properties attached to $scope will become available to use in the directive's template.</li>
+        <li><b>element</b> refers to the directive's HTML element.</li>
+        <li><b>attrs</b> contains the element's attributes.</li>
+    </ul>
+      
+<h3>Directives template</h3>
+    
+    <p>Now, we'll have to write the directives template.</p>
+      
+<pre>&ltbutton class="btn btn-active" ng-click="download()"> 
+  {{ buttonText }} 
+&lt/button>
+</pre>
+      
+    <p>Finally, add the directive to the <b>index.html</b></p>
+      
+<pre>&lt^install-app>&lt/install-app></pre>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/InteractiveDirective.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/InteractiveDirective.PNG" alt="image InteractiveDirective">   
+            </a>
+            <legend>Interactive directive</legend>
+        </div>
+    </div>       
+
+<h2>Services</h2>
+      
+    <p>With <b>Services</b>, we can communicate with a server. So far we've made AngularJS apps by adding data to a <b>controller</b>, and then displaying it in a view. But what happens when the data contains hundreds of items, or if it's constantly changing like weather or financial data? <b>Hardcoding data into a controller won't work anymore.</b></p>
+      
+    <p>A better solution involves the use of <b>services</b>.</p>
+      
+    <p>By connecting to </p>
+      
+    <p><code>https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/forecast.json</code></p>
+      
+    <p>we will get forecast data in a JSON (JavaScript Object Notation) representation.</p>
+      
+<pre>  "city_name": "New York",
+  "country": "US",
+  "days": [
+    {
+      "datetime": 1420390800000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/sun.svg",
+      "high": 68,
+      "low": 37
+    },
+    {
+      "datetime": 1420477200000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/clouds.svg",
+      "high": 68,
+      "low": 37
+    },
+    {
+      "datetime": 1420563600000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/rain.svg",
+      "high": 46,
+      "low": 14
+    },
+    {
+      "datetime": 1420650000000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/clouds.svg",
+      "high": 46,
+      "low": 28
+    },
+    {
+      "datetime": 1420736400000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/sun.svg",
+      "high": 59,
+      "low": 32
+    }
+  ]
+}</pre>
+      
+    <p>First, we'll fetch this data with a service.</p>
+      
+<pre>app.factory('forecast', ['$http', function($http) { 
+  return $http.get('https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/forecast.json') 
+            .success(function(data) { 
+              return data; 
+            }) 
+            .error(function(err) { 
+              return err; 
+            }); 
+}]);</pre>
+      
+    <p>The service then needs to included in the <b>index.html</b>.</p>
+      
+<pre>...
+&lt!-- Services -->
+&ltscript src ="js/services/forecast.js">&lt/script>
+...</pre>
+      
+    <p>Inside the <b>MainController.js</b> pass in the <code>forecast</code> service.</p>
+      
+<pre>app.controller('MainController', ['$scope', 'forecast', function($scope, forecast) { 
+ forecast.success(function(data) { 
+    $scope.fiveDay = data; 
+  });
+}]);</pre>
+    
+    <p>...and the city will show up in the app.</p>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/ServicesForecast.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/ServicesForecast.PNG" alt="image ServicesForecast">   
+            </a>
+            <legend>Result forecast service</legend>
+        </div>
+    </div>    
+      
+    <p>So, how did we do this?</p>
+      
+      <ol>
+        <li>First, in <b>js/services/forecast.js</b>, we made a new service. We used app.factory to create a new service named forecast</li>
+        <li>The forecast service needs to use AngularJS's built-in $http to fetch JSON from the server. Therefore, we add $http to the forecast service as a dependency, like this: 
+<pre> ['$http', function($http) {
+   // ...
+ }]</pre>  Now $http is available to use inside forecast.</li>
+        <li>Then, inside forecast, we use <code>$http</code> to construct an <code>HTTP GET</code> request for the weather data. If the request succeeds, the weather data is returned; otherwise the error info is returned.</li>
+        <li>Next in the controller, we used the forecast service to fetch data from the server. First we added forecast into <b>MainController</b> as a dependency so that it's available to use. Then within the controller we used forecast to asynchronously fetch the weather data from the server and store it into <code>$scope.fiveDay</code></li>
+          <pre>app.controller('MainController', ['$scope', 'forecast', function($scope, forecast) { 
+ forecast.success(function(data) { 
+    $scope.fiveDay = data; 
+  });
+}]);</pre>
+        <li>As before, any properties attached to <code>$scope</code> become available to use in the view. This means in <b>index.html</b>, we can display the <code>city_name</code> using an expression as done before.</li>
+        <pre>&lth1>{{ fiveDay.city_name }}&lt/h1></pre>
+      </ol>
+   
+<p>In the JSON file, every day has four pieces of data <code>datetime</code>, <code>icon</code>, <code>high</code>, <code>low</code>:</p>
+      
+<pre>...
+{
+  "city_name": "New York",
+  "country": "US",
+  "days": [
+    {
+      "datetime": 1420390800000,
+      "icon": "https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/sun.svg",
+      "high": 68,
+      "low": 37
+    },
+    ...</pre>
+      
+<h2>Routes</h2>
+      
+    <p>A better solution is to use multiple templates (languages) that display different pieces of data based on the URL tha the user is visiting. We can do this with Angular's <b>application routes</b>.</p>
+    
+    <p>In the <b>index.html</b> add:</p>
+      
+<pre>  &lthead>
+    &ltdiv ng-view>&lt/div>
+    ...
+    &lt/head></pre>
+      
+    <p>In the <b>app.js</b> file, add:</p>
+      
+<pre>var app = angular.module('GalleryApp', ['ngRoute']);
+
+app.config(function ($routeProvider) { 
+  $routeProvider 
+    .when('/', { 
+      controller: 'HomeController', 
+      templateUrl: 'views/home.html' 
+    }) 
+    .otherwise({ 
+      redirectTo: '/' 
+    }); 
+});</pre>
+      
+    <p>This results in an image gallery:</p>
+      
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/10_AngularJS/ImageGallery.PNG"> 
+                <img class="img-thumbnail" src="media/images/10_AngularJS/ImageGallery.PNG" alt="image ImageGallery">   
+            </a>
+            <legend>Image gallery</legend>
+        </div>
+    </div>    
+
+  <p>So, how does it work?</p>
+
+      <ol>
+        <li>In <b>app.js</b> inside the <code>app.config()</code> method, we use Angular's <code>$routeProvider</code> to define the application routes.</li>
+        <li>We used <code>.when()</code> to map the URL / to the controller <b>HomeController</b> and the template <b>home.html</b>. The HomeController uses the service <b>js/services/photos.js</b> to fetch the array of all photos from <code>https://s3.amazonaws.com/codecademy-content/courses/ltp4/photos-api/photos.json</code> and stores it into <code>$scope.photos</code>. The home.html uses ng-repeat to loop through each item in the photos array and display each photo.</li>
+      </ol>
+      
+  <p>You can add additional templates or routes:</p>
+      
+<pre>var app = angular.module('GalleryApp', ['ngRoute']);
+
+app.config(function ($routeProvider) { 
+  $routeProvider 
+    .when('/', { 
+      controller: 'HomeController', 
+      templateUrl: 'views/home.html' 
+    }) 
+  	.when('/photos/:id', {
+    	controller: 'PhotoController',
+    	templateUrl: 'views/photo.html'
+  	})
+    .otherwise({ 
+      redirectTo: '/' 
+    }); 
+});</pre>
+
+    <p>So what does this mean?</p>
+      
+      <ol>
+        <li>In <b>app.js</b>, we mapped a URL to PhotoController and <b>photo.html</b>. We added a variable part named id to the URL, like this: <code>/photos/:id</code>.</li>
+        <li>In <b>PhotoController</b>, we used Angular's <code>$routeParams</code> to retrieve id from the URL by using <code>$routeParams.id</code>. Notice that we injected both <code>$routeParams</code> and the photos service into the <b>PhotoController</b> dependency array to make them available to use inside the controller.</li>
+        <li>Then to fetch an individual photo, we first used the photos service to fetch the array of photos from the server, and then used <code>$routeParams.id</code> to access the specific photo by its index.</li>
+        <li>As before, any properties attached to <code>$scope</code> become available to use in the view. This means in <b>photo.html</b>, we can display the photo's detail using expressions as done before.</li>
+      </ol>
+      
+      <p>Why are routes useful?</p>
+      
+      <p>Instead of filling a single view with more code than needed, routes let us map URLs to self-contained controllers and templates. Furthermore, now that the app has URLs, users can easily bookmark and share the app's pages.</p>
       
     <!-- End of your content -->
+      
+<h2>Generalization of directives</h2>
+      
+<ul>
+    <li>Directives are a powerful way to create self-contained, interactive components. Unlike jQuery which adds interactivity as a layer on top of HTML, AngularJS treats interactivity as a native component of HTML.</li>
+    <li>Directives are a way to make standalone UI components, like <code>&ltapp-info></code>
+    <li>Services are a way to make standalone communication logic, like forecast which fetches weather data from a server.</li>
+    <li>Otherwise if a user accidentally visits a URL other than <code>/</code>, we just redirect to <code>/</code> using <code>.otherwise()</code>.</li>
+    <li>Now when a user visits <code>/</code>, a view will be constructed by injecting home.html into the <pre>&ltdiv ng-view>&lt/div></pre> in <b>index.html</b>.</li>
+    <li>Routes are a way to manage apps containing more views.</li>
+</ul>      
 
     </div> <!-- /container -->
 
