@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Name Surname">
+    <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>Fab Academy 2015 - Name Surname</title>
+    <title>Ethereum - Solidity</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Name Surname</a>
+          <a class="navbar-brand" href="index.html">Joern Kiwitt</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -81,139 +81,39 @@
 	<!-- Insert your content here below! -->
 
 
-     <h2>Exercise...</h1>
+     <h1>Solidity</h1>
     
-    <h3>Menu</h3>
-	<p>
-	You can edit it by changing the <em>exercises-menu.html</em> and <em>project-menu.html</em>. Do <strong>not</strong> add any &ltol&gt; or &ltul&gt;, leave the structure as it is.
-	</p>
+        <p>Solidity is a programming language to programmes the Ethereum Virtual Machine (EVM) to execute smart contracts. This documentation is a "get started" tutorial on smart contracts.</p>
+        
+    <h2>Tools</h2>
+        
+        <p>I will use a bunch of different tools to execute the smart contract. </p>
+            
+    <h3>Metamask</h3>
+        <p>One of which is <b><a href="https://metamask.io/">Metamask</a></b>. Metamask is a Chrome browser extension that enables the creation of ethereum wallets. Install it by clicking, <b>settings -> add-ons</b> in your Chrome browser. Set your password, <b>save your seed!</b> and start to create some wallets, e. g. in <b>Kovan</b>, one of the test systems of Ethereum. Side note, Kovan is a metro station in Singapore. </p>
     
-    
-    <h3>Text</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp&gt;
-	Your text here
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p>
-	Your text here
-	</p>
-	
-	<h3>Images</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
-     
-	<h3>Code</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	
-	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
-
-		# Add edges...
-		print "Building the graph..."
-
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
-	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
-	</p>
-	
-	<h3>3D Model</h3>
-	<p>	
-	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltcanvas id="cv" width=640 height=480&gt;
-	It seems you are using an outdated browser that does not support canvas :-(
-	&lt/canvas&gt;
-	&ltscript type="text/javascript"&gt;
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	&lt/script&gt;</pre>
-	
-	You can set up the path to the 3D model (.stl/.obj) within this line:
-	<pre class="prettyprint linenums">
-	viewer.setParameter('SceneUrl','media/monkey.stl');</pre>
-	
-	Result:
-	<canvas id="cv" width=640 height=480>
-	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	</script> 
-    </p> 
-    
-    <h3>Download</h3>
-	<p>
-	You can set up a button for files to be downloaded with:
-	<pre class="prettyprint linenums">
-	&lta href="#"&gt;
-	&ltbutton type="button" class="btn btn-primary btn-lg">Download the file&lt/button&gt;
-	&lt/a&gt;</pre>
-	</p>
-	
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
-      
-    <h3>Would you like to insert more style/elements?</h3>
-      <p>
-      Check the documentation of Bootstrap <a href="">here</a>.
-      </p>
-    <!-- End of your content -->
-
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/12_Solidity/MetaMask.PNG"> 
+                <img class="img-thumbnail" src="media/images/12_Solidity/MetaMask.PNG" alt="image MetaMask">   
+            </a>
+            <legend>MetaMask</legend>
+        </div>
+    </div>          
+        
+    <p>In order to execute your smart contract, you need to buy Ether - which as you may have heard - served as a currency for <b>Gas</b> which drives the EVM. There are so called <b>faucets</b> for the test systems Ether, so let's get some.</p>        
+        
+    <div class="container">        
+        <div class="col-sm-6">             
+            <a href="media/images/12_Solidity/MetaMask_Buy.PNG"> 
+                <img class="img-thumbnail" src="media/images/12_Solidity/MetaMask_Buy.PNG" alt="image MetaMask_Buy">   
+            </a>
+            <legend>MetaMask: buy test ether</legend>
+        </div>
+    </div>       
+        
+    <p>Clicking <b>buy</b> will redirect you to Github, where different ways to acquire test Ethers are explained.</p>
+  
     </div> <!-- /container -->
 
 	<!-- footer -->
