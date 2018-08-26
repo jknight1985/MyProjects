@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Name Surname">
+    <meta name="author" content="Joern Kiwitt">
     <link rel="icon" href="media/favicon.ico">
 
-    <title>Fab Academy 2015 - Name Surname</title>
+    <title>Machine Learning with Python</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,141 +79,170 @@
     <div class="container">
 
 	<!-- Insert your content here below! -->
+    <h1>Machine learning with Python</h1>
+        
+        <p>I decided to build my knowledge in machine learning tapping into my usual suspect sources as <b>edX</b>. I found a python course, which is my favourite language at the moment, so I wanted to combine both which somehow makes sense as python is the most widely adopted language for beginners in data science. Please find the link to the course <a href="https://courses.edx.org/courses/course-v1:Microsoft+DAT275x+2T2018/course/">here</a>.</p>
 
-
-     <h2>Exercise...</h1>
+        <h2>Overview</h2>
+        
+        <p>Applications: demand forecasting, fraud detection, SPAM detection, targeted marketing, preventive maintenance. Structure: lecture, demos, labs.</p>
+        
+        <h2>Mod 1: Background & introduction</h2>
+        
+            <h3>Preparing an Environment for the Labs</h3>
+                <p>We will use <a href="https://notebooks.azure.com/">Azure Notebooks</a>.</p>
+        
+            <div class="container">        
+                <div class="col-sm-6">             
+                    <a href="media/images/13_MSPython/LibraryMS.PNG"> 
+                        <img class="img-thumbnail" src="media/images/13_MSPython/LibraryMS.PNG" alt="image LearningAboutESP8266WIFI">   
+                    </a>
+                    <legend>Azure Notebooks</legend>
+                </div>
+            </div>              
+        
+            <h3>Introduction to data science</h3>
+                <p>Steps (from 2012):</p>
+                    <ol>
+                        <li>Acquistion/Recording</li>
+                        <li>Extraction / Cleaning / Annovation</li>
+                        <li>Integration / Aggreation / Representation</li>
+                        <li>Analysis / Modeling</li>
+                        <li>Interpretation</li>
+                    </ol>
+        
+                <p>KDD - Knowledge Discovery in Databases Process (fom 1996)</p>
+                    <ol>
+                        <li>Selection</li>
+                        <li>Preprocessing</li>
+                        <li>Transformation</li>
+                        <li>Data mining</li>
+                        <li>Interpretation / Evaluation</li>
+                    </ol>        
+                <p>CRISP-DM - CRoss Industry Standard Process for Data Mining</p>
+        
+                <p>CCC Big date pipeline</p>
+        
+                <p>The stages are basically the same.</p>
+        
+            <h3>Knowledge discovery process</h3>
+        
+                <p>Example: power failures in New York City -> go back to Thomas Alba Edisson.</p>
+        
+                <p>Opportunity assessment & business understanding, e. g. fire in manhole.</p>
+        
+            <h3>The four v</h3>
+        
+            <ul>
+                <li>v - velocity</li>
+                <li>v - volume</li>
+                <li>v - variety</li>
+                <li>v - verocity (trustworthiness)</li>
+            </ul>
+        
+            <p>Data cleaning might be 99 % of the work. Turn data into a <b>vector</b>. Integrate different tables is difficult.</p>
+        
+            <div class="container">        
+                <div class="col-sm-6">             
+                    <a href="media/images/13_MSPython/Process.PNG"> 
+                        <img class="img-thumbnail" src="media/images/13_MSPython/Process.PNG" alt="image LearningAboutESP8266WIFI">   
+                    </a>
+                    <legend>Knowledge discovery process</legend>
+                </div>
+            </div>    
+        
+            <h3>Model building</h3>
+        
+                <p>Types of models:</p>
+                <ul>
+                    <li>Predictive modeling: machine learning or statistical modeling</li>
+                    <li>Yes or No questions - <b>classification</b></li>
+                    <li>Predict numerical value - <b>regression</b></li>
+                    <li>Similar objects to groups - <b>Clustering problem</b></li>
+                    <li>Recommend someone an item (e. g. book or movie) - <b>Recommender</b></li>
+                </ul>
+        
+                <p>Construct policy --> prescriptive: want shall be done with the result?</p>
+        
+            <h3>Deployment</h3>
+        
+                <p>95 % of projects stops here. Add month to your timeline :)! Model needs to updated and improved</p>
+        
+            <h3>K-Means Classfiers</h3>
+        
+                <p>Prediction of data:</p>
+        
+                <math>
+                    <mpadded>
+                        <mi>f</mi> (x) <mo>=</mo> y
+                    </mpadded>
+                </math>
+        
+                <p>How to use <b>HTML</b> tags for MathML can be found <a href="https://www.w3.org/TR/MathML2/chapter2.html">here</a>.</p>
+        
+            	<p><b>Supervised learning</b>: has known label value, e. g. feature provide information to train model. Labels are the correct answer (<b>training sets</b>).</p>
+                <p><b>Unsupervided learning</b>: uses only the feature values, no labels</p>
+        
+                <p>Simplified learning process:</p>
+                
+                <ul>
+                    <li>prepare data</li>
+                    <li>feature engineering</li>
+                    <li>split dataset (training & test set)</li>
+                </ul>
+        
+                <p><b>K-nearest neighbors (KNN) algorithm</b></p>
+        
+                <ul>
+                    <li>does not require training</li>
+                    <li>new case is classified based on proximity to labeled cases</li>
+                    <li>use a distance metric</li>
+                    <li>euclidian distance</li>
+                    <li>weighted distance</li>
+                    <li>K defines the number of neighbors considered</li>
+                    <li>majority vote</li>
+                </ul>
+        
+                <p><b>Example</b>: How to classify this question mark?</p>
+        
+                <div class="container">        
+                    <div class="col-sm-6">             
+                        <a href="media/images/13_MSPython/K_near.PNG"> 
+                            <img class="img-thumbnail" src="media/images/13_MSPython/K_near.PNG" alt="image LearningAboutESP8266WIFI">   
+                        </a>
+                        <legend>Example: K-nearest neighbors</legend>
+                    </div>
+                </div>            
+        
+                <ul>
+                    <li>Option 1: K = 1, NN --> only nearest neighbor considered</li>
+                    <li>Option 2: K = 3, NN --> three nearest neighbor considered</li>
+                </ul>
+                
+                <p><b>KNN</b> is an effective classifier, but KNN suffers from the <b>curse of dimensionality</b>. If you more dimensions and you want the same density of data, the samples necessary grows with the power of the dimensions:</p>
+        
+                <ul>
+                    <li>1 dimension = 10 samples</li>
+                    <li>2 dimension = 100 samples</li>
+                    <li>3 dimension = 1000 samples</li>
+                    <li>4 dimension = 10000 samples</li>
+                </ul>
+                
+                <p>Affects all ML algorithms, particularly KNN.</p>
+        
+            <h3>First model</h3>
+        
+                <p>Three class dataset -> Iris flowers <a href="https://mspython-anongyy66a.notebooks.azure.com/j/notebooks/Module1/IntroductionToMachineLearning.ipynb">(here)</a>. </p>
+        
+        
+        
+        <h2>Mod 2: Data exploration & visualization</h2>
+        <h2>Mod 3: Data preparation</h2>
+        <h2>Mod 4: Supervised learning</h2>
+        <h2>Mod 5: Improving machine learning models</h2>
+        <h2>Mod 6: Supervised machine learning algorithms</h2>
+        <h2>Mod 7: Unsupervised machine learning</h2>
     
-    <h3>Menu</h3>
-	<p>
-	You can edit it by changing the <em>exercises-menu.html</em> and <em>project-menu.html</em>. Do <strong>not</strong> add any &ltol&gt; or &ltul&gt;, leave the structure as it is.
-	</p>
-    
-    
-    <h3>Text</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp&gt;
-	Your text here
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p>
-	Your text here
-	</p>
-	
-	<h3>Images</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltp class="pic&gt;>&ltimg src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg"&gt;
-	&ltlegend&gt;Here's the legend of the picture.&lt/legend&gt;
-	&lt/p&gt;</pre>
-	</p>
-	Result:
-	<p class="pic"><img src="http://academy.cba.mit.edu/2012/students/menichinelli.massimo/exercise07/exercise07_02.jpg">
-	<legend>Here's the legend of the picture.</legend>
-	</p>
-     
-	<h3>Code</h3>
-	<p>
-	You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltpre class="prettyprint linenums"&gt;
-	Your code here
-	&lt/pre&gt;</pre>
-	
-	Result:
-	<pre class="prettyprint linenums">
-	for i in members:
-		print ""
-		print "USER:",members[i]
-		print "Loading connections..."
-		followers = load_connections([i], "followers")
-		friends = load_connections([i], "friends")
-
-		# Add edges...
-		print "Building the graph..."
-
-		for f in followers:
-			for k in followers[f]:
-				graph.add_edge(k,f)
-	
-		for f in friends:
-			for k in friends[f]:
-				graph.add_edge(f,k)</pre>
-	</p>
-	
-	<h3>3D Model</h3>
-	<p>	
-	The model can be rotated and zoomed with the mouse/trackpad. You can set it up with:
-	<pre class="prettyprint linenums">
-	&ltcanvas id="cv" width=640 height=480&gt;
-	It seems you are using an outdated browser that does not support canvas :-(
-	&lt/canvas&gt;
-	&ltscript type="text/javascript"&gt;
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	&lt/script&gt;</pre>
-	
-	You can set up the path to the 3D model (.stl/.obj) within this line:
-	<pre class="prettyprint linenums">
-	viewer.setParameter('SceneUrl','media/monkey.stl');</pre>
-	
-	Result:
-	<canvas id="cv" width=640 height=480>
-	It seems you are using an outdated browser that does not support canvas :-(
-	</canvas>
-	<script type="text/javascript">
-		var canvas = document.getElementById('cv');
-		var viewer = new JSC3D.Viewer(canvas);
-		viewer.setParameter('SceneUrl','media/monkey.stl');
-		viewer.setParameter('ModelColor','#CAA618');
-		viewer.setParameter('BackgroundColor1','#E5D7BA');
-		viewer.setParameter('BackgroundColor2','#383840');
-		viewer.setParameter('RenderMode','flat');
-		viewer.setParameter('MipMapping','on');
-		viewer.setParameter('Definition','high');
-		viewer.setParameter('Renderer','webgl');
-		viewer.init();
-		viewer.update();
-	</script> 
-    </p> 
-    
-    <h3>Download</h3>
-	<p>
-	You can set up a button for files to be downloaded with:
-	<pre class="prettyprint linenums">
-	&lta href="#"&gt;
-	&ltbutton type="button" class="btn btn-primary btn-lg">Download the file&lt/button&gt;
-	&lt/a&gt;</pre>
-	</p>
-	
-	<p>
-	Result:
-	</p>
-	<p>
-	<a href="#">
-	<button type="button" class="btn btn-primary btn-lg">Download the file</button>
-	</a>
-	</p>
-      
-    <h3>Would you like to insert more style/elements?</h3>
-      <p>
-      Check the documentation of Bootstrap <a href="">here</a>.
-      </p>
-    <!-- End of your content -->
-
     </div> <!-- /container -->
 
 	<!-- footer -->

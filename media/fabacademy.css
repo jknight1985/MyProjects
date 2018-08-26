@@ -165,3 +165,5 @@ th, td {
     display: block;
     max-height: 400px;
 }
+
+math { font-size: x-large; color: black; display: block; }
