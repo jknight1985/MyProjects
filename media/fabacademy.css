@@ -157,3 +157,11 @@ table, th, td {
 th, td {
     padding: 10px;
 }
+
+.img-thumbnail {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: block;
+    max-height: 400px;
+}
